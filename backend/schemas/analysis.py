@@ -1,5 +1,5 @@
 """
-TruthLens AI — Analysis Schemas
+VeriShot AI — Analysis Schemas
 Pydantic models for request/response validation.
 """
 from __future__ import annotations

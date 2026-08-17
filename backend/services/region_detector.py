@@ -1,5 +1,5 @@
 """
-TruthLens AI — Suspicious Region Detector
+VeriShot AI — Suspicious Region Detector
 
 Combines ELA anomaly map, OCR bounding boxes, and (optionally) Grad-CAM
 to produce labeled suspicious region candidates for display.

@@ -110,7 +110,7 @@ export function UploadPage({ onFileUpload, error }: UploadPageProps) {
         </motion.div>
 
         <h1 className="text-5xl sm:text-6xl font-bold mb-4 leading-tight">
-          <span className="text-gradient-brand">TruthLens</span>
+          <span className="text-gradient-brand">VeriShot</span>
           <span className="text-white"> AI</span>
         </h1>
         <p className="text-2xl font-light text-surface-300 mb-3">
@@ -293,7 +293,7 @@ export function UploadPage({ onFileUpload, error }: UploadPageProps) {
       >
         <p className="text-surface-500 text-xs leading-relaxed">
           <span className="text-surface-400 font-medium">Important:</span>{' '}
-          TruthLens AI provides a <strong className="text-surface-400">forensic risk assessment</strong>,
+          VeriShot AI provides a <strong className="text-surface-400">forensic risk assessment</strong>,
           not definitive proof of authenticity or fraud. Results should be used as one 
           factor among many in evaluating document authenticity.
         </p>

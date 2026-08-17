@@ -1,5 +1,5 @@
 """
-TruthLens AI — ML Training Script
+VeriShot AI — ML Training Script
 
 Two-stage training:
 Stage 1: Freeze backbone, train classification head
@@ -294,7 +294,7 @@ def train(args):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Train TruthLens AI manipulation detector")
+    parser = argparse.ArgumentParser(description="Train VeriShot AI manipulation detector")
     parser.add_argument("--arch", default=MODEL_ARCH, choices=["efficientnet_b0", "resnet50"])
     parser.add_argument("--batch_size", type=int, default=BATCH_SIZE)
     parser.add_argument("--stage1_epochs", type=int, default=STAGE1_EPOCHS)

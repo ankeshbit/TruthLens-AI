@@ -1,5 +1,5 @@
 """
-TruthLens AI — Backend Tests
+VeriShot AI — Backend Tests
 
 Tests for health endpoint, analysis route, validation, and forensic modules.
 Run: pytest tests/backend/ -v

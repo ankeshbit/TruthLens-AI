@@ -1,5 +1,5 @@
 """
-TruthLens AI — Health Check Route
+VeriShot AI — Health Check Route
 """
 from fastapi import APIRouter
 from schemas.analysis import HealthResponse

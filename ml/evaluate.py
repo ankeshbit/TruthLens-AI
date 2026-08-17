@@ -1,5 +1,5 @@
 """
-TruthLens AI — Model Evaluation Utilities
+VeriShot AI — Model Evaluation Utilities
 
 Provides metrics computation for training and final evaluation.
 """

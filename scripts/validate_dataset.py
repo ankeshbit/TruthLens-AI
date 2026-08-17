@@ -1,5 +1,5 @@
 ﻿"""
-TruthLens AI — Dataset Validation Script
+VeriShot AI — Dataset Validation Script
 
 Checks the dataset for:
 - Corrupted images
@@ -119,7 +119,7 @@ def validate_dataset(data_dir: Path) -> dict:
 def print_report(report: dict) -> None:
     """Print the dataset validation report."""
     print("\n" + "=" * 50)
-    print("        TRUTHLENS DATASET REPORT")
+    print("        VERISHOT DATASET REPORT")
     print("=" * 50)
 
     genuine = report["genuine"]
@@ -180,7 +180,7 @@ def print_report(report: dict) -> None:
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Validate TruthLens dataset")
+    parser = argparse.ArgumentParser(description="Validate VeriShot dataset")
     parser.add_argument(
         "--data_dir",
         type=Path,

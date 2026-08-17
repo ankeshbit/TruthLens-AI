@@ -1,5 +1,5 @@
 """
-TruthLens AI — OCR Service
+VeriShot AI — OCR Service
 
 Uses EasyOCR for text extraction. If EasyOCR is unavailable,
 falls back to a basic OpenCV-based text region detector that

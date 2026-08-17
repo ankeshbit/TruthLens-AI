@@ -1,5 +1,5 @@
 """
-TruthLens AI — Metadata Analysis Service
+VeriShot AI — Metadata Analysis Service
 
 Extracts and analyzes image metadata (EXIF and file properties).
 

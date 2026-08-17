@@ -1,5 +1,5 @@
 """
-TruthLens AI — Noise Analysis Service
+VeriShot AI — Noise Analysis Service
 
 Analyzes local noise patterns to detect manipulation.
 Genuine screenshots have spatially consistent noise characteristics.

@@ -1,5 +1,5 @@
 """
-TruthLens AI — Classification Threshold Optimization
+VeriShot AI — Classification Threshold Optimization
 
 Evaluates multiple thresholds on the validation set and selects the one
 that maximizes F1 score for the manipulated class.
@@ -15,7 +15,10 @@ import torch
 import torch.nn as nn
 from pathlib import Path
 
-from config import THRESHOLDS_TO_EVALUATE
+try:
+    from ml.config import THRESHOLDS_TO_EVALUATE
+except ImportError:
+    from config import THRESHOLDS_TO_EVALUATE
 
 logger = logging.getLogger(__name__)
 

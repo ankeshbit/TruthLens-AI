@@ -1,5 +1,5 @@
 """
-TruthLens AI — Main Analysis Route
+VeriShot AI — Main Analysis Route
 
 POST /api/analyze
 

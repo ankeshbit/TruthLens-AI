@@ -1,5 +1,5 @@
 """
-TruthLens AI — Image Preprocessing Service
+VeriShot AI — Image Preprocessing Service
 Validates, resizes, and normalizes uploaded images.
 """
 import io

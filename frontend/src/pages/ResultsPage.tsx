@@ -475,7 +475,7 @@ export function ResultsPage({ result, file, onReset }: ResultsPageProps) {
           <div>
             <h4 className="font-semibold text-surface-300 mb-1">Important Disclaimer</h4>
             <p className="text-surface-500 text-sm leading-relaxed">
-              TruthLens AI provides a <strong className="text-surface-400">forensic risk assessment</strong>,
+              VeriShot AI provides a <strong className="text-surface-400">forensic risk assessment</strong>,
               not definitive proof of authenticity or fraud. A high risk score does not prove manipulation;
               a low score does not guarantee authenticity. This tool should be used as one factor among 
               many when evaluating document authenticity.

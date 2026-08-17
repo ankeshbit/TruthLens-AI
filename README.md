@@ -1,10 +1,10 @@
-# TruthLens AI 🔍
+# VeriShot AI 🔍
 
 **AI-Powered Screenshot Manipulation Detection & Digital Forensics**
 
-TruthLens AI is a hackathon-ready forensic analysis platform that helps identify whether screenshots — payment confirmations, bank transactions, invoices, receipts — are **potentially genuine or manipulated**, using independent computer vision and machine learning signals.
+VeriShot AI is a hackathon-ready forensic analysis platform that helps identify whether screenshots — payment confirmations, bank transactions, invoices, receipts — are **potentially genuine or manipulated**, using independent computer vision and machine learning signals.
 
-> ⚠️ **Important**: TruthLens AI provides a *forensic risk assessment*, not definitive proof of authenticity or fraud. Always use multiple factors when evaluating document authenticity.
+> ⚠️ **Important**: VeriShot AI provides a *forensic risk assessment*, not definitive proof of authenticity or fraud. Always use multiple factors when evaluating document authenticity.
 
 ---
 
@@ -70,7 +70,7 @@ Image Validation & Preprocessing
 
 ### 1. Clone and set up
 ```bash
-cd truthlens-ai/
+cd verishot-ai/
 ```
 
 ### 2. Install Backend Dependencies
@@ -296,7 +296,7 @@ The system works even without a trained ML model — forensic signals (ELA, nois
 ## 📁 Project Structure
 
 ```
-truthlens-ai/
+verishot-ai/
 ├── backend/          # FastAPI backend
 │   ├── main.py       # Entry point
 │   ├── config.py     # Configuration

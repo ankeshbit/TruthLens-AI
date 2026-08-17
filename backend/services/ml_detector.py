@@ -1,5 +1,5 @@
 """
-TruthLens AI — ML Manipulation Detector
+VeriShot AI — ML Manipulation Detector
 
 Uses a pretrained EfficientNet-B0 (transfer learning) for binary
 classification: genuine (0) vs manipulated (1).

@@ -1,5 +1,5 @@
 """
-TruthLens AI — History Service (SQLite)
+VeriShot AI — History Service (SQLite)
 
 Stores analysis results without storing the original screenshots.
 Only metadata is retained: filename, score, classification, timestamp.

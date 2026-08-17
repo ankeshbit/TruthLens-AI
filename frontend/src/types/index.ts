@@ -1,4 +1,4 @@
-// TruthLens AI — TypeScript Type Definitions
+// VeriShot AI — TypeScript Type Definitions
 
 export type RiskLevel = 'likely_genuine' | 'suspicious' | 'potentially_manipulated';
 export type ScreenshotType = 

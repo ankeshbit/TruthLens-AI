@@ -1,5 +1,5 @@
 """
-TruthLens AI — Error Level Analysis (ELA) Service
+VeriShot AI — Error Level Analysis (ELA) Service
 
 ELA works by re-saving the image at a lower JPEG quality and measuring
 the pixel-level difference between original and re-saved versions.

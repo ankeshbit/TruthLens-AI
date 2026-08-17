@@ -1,5 +1,5 @@
 """
-TruthLens AI — Backend Configuration
+VeriShot AI — Backend Configuration
 All settings are configurable via environment variables.
 """
 import os
@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).parent
 
 class Settings(BaseSettings):
     # Application
-    APP_NAME: str = "TruthLens AI"
+    APP_NAME: str = "VeriShot AI"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
 

@@ -1,5 +1,5 @@
 """
-TruthLens AI — Layout & Text Consistency Analysis
+VeriShot AI — Layout & Text Consistency Analysis
 
 Analyzes the spatial arrangement and visual consistency of text regions
 detected by OCR. Looks for signs of manipulation such as:

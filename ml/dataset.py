@@ -1,5 +1,5 @@
 """
-TruthLens AI — Dataset Loading and Management
+VeriShot AI — Dataset Loading and Management
 
 Handles:
 - Loading from raw/{genuine,manipulated}/ structure
@@ -24,14 +24,24 @@ import torch
 from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
 import torchvision.transforms as T
 
-from config import (
-    GENUINE_DIR, MANIPULATED_DIR, PROCESSED_DIR,
-    IMAGE_SIZE, NORMALIZE_MEAN, NORMALIZE_STD,
-    TRAIN_SPLIT, VAL_SPLIT, TEST_SPLIT,
-    GENUINE_LABEL, MANIPULATED_LABEL,
-    USE_HORIZONTAL_FLIP, BRIGHTNESS_FACTOR, CONTRAST_FACTOR,
-    SEED, NUM_WORKERS,
-)
+try:
+    from ml.config import (
+        GENUINE_DIR, MANIPULATED_DIR, PROCESSED_DIR,
+        IMAGE_SIZE, NORMALIZE_MEAN, NORMALIZE_STD,
+        TRAIN_SPLIT, VAL_SPLIT, TEST_SPLIT,
+        GENUINE_LABEL, MANIPULATED_LABEL,
+        USE_HORIZONTAL_FLIP, BRIGHTNESS_FACTOR, CONTRAST_FACTOR,
+        SEED, NUM_WORKERS,
+    )
+except ImportError:
+    from config import (
+        GENUINE_DIR, MANIPULATED_DIR, PROCESSED_DIR,
+        IMAGE_SIZE, NORMALIZE_MEAN, NORMALIZE_STD,
+        TRAIN_SPLIT, VAL_SPLIT, TEST_SPLIT,
+        GENUINE_LABEL, MANIPULATED_LABEL,
+        USE_HORIZONTAL_FLIP, BRIGHTNESS_FACTOR, CONTRAST_FACTOR,
+        SEED, NUM_WORKERS,
+    )
 
 logger = logging.getLogger(__name__)
 

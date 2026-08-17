@@ -1,5 +1,5 @@
 """
-TruthLens AI — Evidence Fusion Engine
+VeriShot AI — Evidence Fusion Engine
 
 Combines independent forensic signals into a single risk score.
 

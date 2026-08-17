@@ -1,5 +1,5 @@
 """
-TruthLens AI — ML Pipeline Configuration
+VeriShot AI — ML Pipeline Configuration
 
 All hyperparameters are defined here for easy tuning.
 """

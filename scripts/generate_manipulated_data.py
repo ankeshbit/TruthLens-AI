@@ -1,5 +1,5 @@
 """
-TruthLens AI — Synthetic Manipulated Data Generator
+VeriShot AI — Synthetic Manipulated Data Generator
 
 Creates realistic synthetic manipulated screenshots from genuine ones.
 

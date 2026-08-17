@@ -1,5 +1,5 @@
 """
-TruthLens AI — ML Model Definition
+VeriShot AI — ML Model Definition
 
 Supports:
 - EfficientNet-B0 (default)

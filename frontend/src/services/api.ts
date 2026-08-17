@@ -1,4 +1,4 @@
-// TruthLens AI — API Service
+// VeriShot AI — API Service
 import axios, { AxiosError } from 'axios';
 import type { AnalysisResult, HealthStatus, HistoryEntry } from '../types';
 
@@ -33,7 +33,7 @@ function handleAxiosError(error: unknown): never {
     
     if (!axiosErr.response) {
       throw new ApiError(
-        'Cannot connect to TruthLens backend. Please ensure the backend server is running.',
+        'Cannot connect to VeriShot backend. Please ensure the backend server is running.',
         0,
         'Backend unavailable'
       );

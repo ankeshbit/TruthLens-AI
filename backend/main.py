@@ -1,5 +1,5 @@
 """
-TruthLens AI — FastAPI Application Entry Point
+VeriShot AI — FastAPI Application Entry Point
 
 Startup sequence:
 1. Initialize database
@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     """Application startup and shutdown lifecycle."""
     logger.info("=" * 60)
-    logger.info("  TruthLens AI — Backend Starting")
+    logger.info("  VeriShot AI — Backend Starting")
     logger.info("=" * 60)
 
     # Initialize history database
@@ -67,7 +67,7 @@ async def lifespan(app: FastAPI):
         logger.warning("⚠ OCR unavailable. Text analysis disabled.")
 
     logger.info("=" * 60)
-    logger.info("  TruthLens AI ready")
+    logger.info("  VeriShot AI ready")
     logger.info(f"  ML Model: {'✓ Loaded' if model_loaded else '✗ Not available'}")
     logger.info(f"  OCR: {'✓ ' + ocr_service.get_ocr_engine() if ocr_ok else '✗ Unavailable'}")
     logger.info("=" * 60)
@@ -75,7 +75,7 @@ async def lifespan(app: FastAPI):
     yield
 
     # Cleanup on shutdown
-    logger.info("TruthLens AI shutting down...")
+    logger.info("VeriShot AI shutting down...")
 
 
 app = FastAPI(

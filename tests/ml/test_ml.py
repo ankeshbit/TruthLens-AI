@@ -1,5 +1,5 @@
 """
-TruthLens AI — ML Pipeline Tests
+VeriShot AI — ML Pipeline Tests
 """
 import sys
 import io
@@ -14,14 +14,16 @@ from PIL import Image
 
 class TestMLConfig:
     def test_config_imports(self):
-        from config import (
-            IMAGE_SIZE, MODEL_ARCH, BATCH_SIZE, SEED,
-            STAGE1_EPOCHS, STAGE2_EPOCHS, DEFAULT_THRESHOLD
-        )
-        assert IMAGE_SIZE == 224
-        assert MODEL_ARCH == "efficientnet_b0"
-        assert SEED == 42
-        assert 0.0 < DEFAULT_THRESHOLD < 1.0
+        import importlib.util
+        ml_config_path = Path(__file__).parent.parent.parent / "ml" / "config.py"
+        spec = importlib.util.spec_from_file_location("ml_config_module", ml_config_path)
+        ml_cfg = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(ml_cfg)
+
+        assert ml_cfg.IMAGE_SIZE == 224
+        assert ml_cfg.MODEL_ARCH == "efficientnet_b0"
+        assert ml_cfg.SEED == 42
+        assert 0.0 < ml_cfg.DEFAULT_THRESHOLD < 1.0
 
 
 class TestMLModel:
@@ -113,7 +115,10 @@ class TestDataset:
 
 class TestThreshold:
     def test_threshold_defaults(self):
-        from config import THRESHOLDS_TO_EVALUATE, DEFAULT_THRESHOLD
+        try:
+            from ml.config import THRESHOLDS_TO_EVALUATE, DEFAULT_THRESHOLD
+        except ImportError:
+            from config import THRESHOLDS_TO_EVALUATE, DEFAULT_THRESHOLD
         assert 0.3 in THRESHOLDS_TO_EVALUATE
         assert 0.5 in THRESHOLDS_TO_EVALUATE
         assert 0.0 < DEFAULT_THRESHOLD < 1.0

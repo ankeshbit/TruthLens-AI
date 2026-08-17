@@ -30,7 +30,7 @@ export function Navbar({ currentPage, onPageChange, onReset }: NavbarProps) {
             </div>
             <div className="flex flex-col items-start">
               <span className="text-base font-bold text-gradient-brand tracking-tight">
-                TruthLens AI
+                VeriShot AI
               </span>
               <span className="text-xs text-surface-500 font-medium tracking-wider uppercase">
                 Forensic Analysis

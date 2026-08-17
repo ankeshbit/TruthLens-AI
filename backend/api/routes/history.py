@@ -1,5 +1,5 @@
 """
-TruthLens AI — History Route
+VeriShot AI — History Route
 """
 from fastapi import APIRouter, Request
 from schemas.analysis import HistoryEntry
