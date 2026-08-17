@@ -1,0 +1,2837 @@
+[
+  {
+    "source": "synthetic_genuine_0000.png",
+    "output": "synthetic_genuine_0000_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0000.png",
+    "output": "synthetic_genuine_0000_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      129,
+      219,
+      201,
+      259
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0000.png",
+    "output": "synthetic_genuine_0000_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "20 Nov 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0001.png",
+    "output": "synthetic_genuine_0001_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      185,
+      202,
+      263,
+      232
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0001.png",
+    "output": "synthetic_genuine_0001_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0001.png",
+    "output": "synthetic_genuine_0001_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0002.png",
+    "output": "synthetic_genuine_0002_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      103,
+      175,
+      190,
+      206
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0002.png",
+    "output": "synthetic_genuine_0002_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0002.png",
+    "output": "synthetic_genuine_0002_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0003.png",
+    "output": "synthetic_genuine_0003_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0003.png",
+    "output": "synthetic_genuine_0003_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0003.png",
+    "output": "synthetic_genuine_0003_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      133,
+      280,
+      204,
+      320
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0004.png",
+    "output": "synthetic_genuine_0004_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0004.png",
+    "output": "synthetic_genuine_0004_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0004.png",
+    "output": "synthetic_genuine_0004_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      131,
+      225,
+      242,
+      259
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0005.png",
+    "output": "synthetic_genuine_0005_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0005.png",
+    "output": "synthetic_genuine_0005_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0005.png",
+    "output": "synthetic_genuine_0005_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      130,
+      278,
+      205,
+      308
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0006.png",
+    "output": "synthetic_genuine_0006_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0006.png",
+    "output": "synthetic_genuine_0006_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Meera Iyer",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0006.png",
+    "output": "synthetic_genuine_0006_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0007.png",
+    "output": "synthetic_genuine_0007_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0007.png",
+    "output": "synthetic_genuine_0007_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      138,
+      260,
+      256,
+      294
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0007.png",
+    "output": "synthetic_genuine_0007_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Meera Iyer",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0008.png",
+    "output": "synthetic_genuine_0008_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0008.png",
+    "output": "synthetic_genuine_0008_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0008.png",
+    "output": "synthetic_genuine_0008_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0009.png",
+    "output": "synthetic_genuine_0009_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0009.png",
+    "output": "synthetic_genuine_0009_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0009.png",
+    "output": "synthetic_genuine_0009_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0010.png",
+    "output": "synthetic_genuine_0010_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0010.png",
+    "output": "synthetic_genuine_0010_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0010.png",
+    "output": "synthetic_genuine_0010_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      161,
+      236,
+      266,
+      267
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0011.png",
+    "output": "synthetic_genuine_0011_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0011.png",
+    "output": "synthetic_genuine_0011_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      173,
+      265,
+      240,
+      299
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0011.png",
+    "output": "synthetic_genuine_0011_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0012.png",
+    "output": "synthetic_genuine_0012_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      199,
+      174,
+      301,
+      206
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0012.png",
+    "output": "synthetic_genuine_0012_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Sanjay Mehta",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0012.png",
+    "output": "synthetic_genuine_0012_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0013.png",
+    "output": "synthetic_genuine_0013_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0013.png",
+    "output": "synthetic_genuine_0013_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0013.png",
+    "output": "synthetic_genuine_0013_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      114,
+      222,
+      207,
+      245
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0014.png",
+    "output": "synthetic_genuine_0014_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "20 Nov 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0014.png",
+    "output": "synthetic_genuine_0014_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0014.png",
+    "output": "synthetic_genuine_0014_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0015.png",
+    "output": "synthetic_genuine_0015_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0015.png",
+    "output": "synthetic_genuine_0015_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0015.png",
+    "output": "synthetic_genuine_0015_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      191,
+      220,
+      272,
+      240
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0016.png",
+    "output": "synthetic_genuine_0016_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0016.png",
+    "output": "synthetic_genuine_0016_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0016.png",
+    "output": "synthetic_genuine_0016_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0017.png",
+    "output": "synthetic_genuine_0017_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0017.png",
+    "output": "synthetic_genuine_0017_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      185,
+      252,
+      272,
+      292
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0017.png",
+    "output": "synthetic_genuine_0017_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0018.png",
+    "output": "synthetic_genuine_0018_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      137,
+      268,
+      216,
+      307
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0018.png",
+    "output": "synthetic_genuine_0018_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0018.png",
+    "output": "synthetic_genuine_0018_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0019.png",
+    "output": "synthetic_genuine_0019_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0019.png",
+    "output": "synthetic_genuine_0019_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      191,
+      163,
+      305,
+      188
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0019.png",
+    "output": "synthetic_genuine_0019_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Meera Iyer",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0020.png",
+    "output": "synthetic_genuine_0020_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0020.png",
+    "output": "synthetic_genuine_0020_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0020.png",
+    "output": "synthetic_genuine_0020_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      125,
+      165,
+      221,
+      199
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0021.png",
+    "output": "synthetic_genuine_0021_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Meera Iyer",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0021.png",
+    "output": "synthetic_genuine_0021_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0021.png",
+    "output": "synthetic_genuine_0021_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      141,
+      169,
+      215,
+      209
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0022.png",
+    "output": "synthetic_genuine_0022_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0022.png",
+    "output": "synthetic_genuine_0022_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0022.png",
+    "output": "synthetic_genuine_0022_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0023.png",
+    "output": "synthetic_genuine_0023_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0023.png",
+    "output": "synthetic_genuine_0023_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      161,
+      160,
+      250,
+      193
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0023.png",
+    "output": "synthetic_genuine_0023_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0024.png",
+    "output": "synthetic_genuine_0024_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0024.png",
+    "output": "synthetic_genuine_0024_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0024.png",
+    "output": "synthetic_genuine_0024_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      161,
+      281,
+      277,
+      303
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0025.png",
+    "output": "synthetic_genuine_0025_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0025.png",
+    "output": "synthetic_genuine_0025_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      176,
+      167,
+      289,
+      187
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0025.png",
+    "output": "synthetic_genuine_0025_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0026.png",
+    "output": "synthetic_genuine_0026_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0026.png",
+    "output": "synthetic_genuine_0026_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0026.png",
+    "output": "synthetic_genuine_0026_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      177,
+      246,
+      259,
+      272
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0027.png",
+    "output": "synthetic_genuine_0027_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0027.png",
+    "output": "synthetic_genuine_0027_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      161,
+      216,
+      281,
+      243
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0027.png",
+    "output": "synthetic_genuine_0027_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0028.png",
+    "output": "synthetic_genuine_0028_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0028.png",
+    "output": "synthetic_genuine_0028_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Sanjay Mehta",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0028.png",
+    "output": "synthetic_genuine_0028_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      111,
+      155,
+      221,
+      185
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0029.png",
+    "output": "synthetic_genuine_0029_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0029.png",
+    "output": "synthetic_genuine_0029_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      188,
+      208,
+      296,
+      228
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0029.png",
+    "output": "synthetic_genuine_0029_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0030.png",
+    "output": "synthetic_genuine_0030_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0030.png",
+    "output": "synthetic_genuine_0030_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0030.png",
+    "output": "synthetic_genuine_0030_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0031.png",
+    "output": "synthetic_genuine_0031_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0031.png",
+    "output": "synthetic_genuine_0031_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0031.png",
+    "output": "synthetic_genuine_0031_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0032.png",
+    "output": "synthetic_genuine_0032_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0032.png",
+    "output": "synthetic_genuine_0032_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0032.png",
+    "output": "synthetic_genuine_0032_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0033.png",
+    "output": "synthetic_genuine_0033_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0033.png",
+    "output": "synthetic_genuine_0033_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0033.png",
+    "output": "synthetic_genuine_0033_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      160,
+      219,
+      256,
+      253
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0034.png",
+    "output": "synthetic_genuine_0034_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      130,
+      242,
+      212,
+      262
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0034.png",
+    "output": "synthetic_genuine_0034_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0034.png",
+    "output": "synthetic_genuine_0034_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0035.png",
+    "output": "synthetic_genuine_0035_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      107,
+      182,
+      187,
+      215
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0035.png",
+    "output": "synthetic_genuine_0035_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0035.png",
+    "output": "synthetic_genuine_0035_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0036.png",
+    "output": "synthetic_genuine_0036_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0036.png",
+    "output": "synthetic_genuine_0036_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "20 Nov 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0036.png",
+    "output": "synthetic_genuine_0036_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      192,
+      268,
+      263,
+      294
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0037.png",
+    "output": "synthetic_genuine_0037_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0037.png",
+    "output": "synthetic_genuine_0037_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      124,
+      253,
+      195,
+      274
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0037.png",
+    "output": "synthetic_genuine_0037_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0038.png",
+    "output": "synthetic_genuine_0038_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      177,
+      225,
+      295,
+      264
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0038.png",
+    "output": "synthetic_genuine_0038_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0038.png",
+    "output": "synthetic_genuine_0038_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0039.png",
+    "output": "synthetic_genuine_0039_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0039.png",
+    "output": "synthetic_genuine_0039_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0039.png",
+    "output": "synthetic_genuine_0039_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0040.png",
+    "output": "synthetic_genuine_0040_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0040.png",
+    "output": "synthetic_genuine_0040_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      151,
+      254,
+      241,
+      280
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0040.png",
+    "output": "synthetic_genuine_0040_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0041.png",
+    "output": "synthetic_genuine_0041_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0041.png",
+    "output": "synthetic_genuine_0041_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      147,
+      201,
+      254,
+      223
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0041.png",
+    "output": "synthetic_genuine_0041_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0042.png",
+    "output": "synthetic_genuine_0042_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0042.png",
+    "output": "synthetic_genuine_0042_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      198,
+      297,
+      291,
+      327
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0042.png",
+    "output": "synthetic_genuine_0042_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0043.png",
+    "output": "synthetic_genuine_0043_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      183,
+      277,
+      269,
+      316
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0043.png",
+    "output": "synthetic_genuine_0043_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Sanjay Mehta",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0043.png",
+    "output": "synthetic_genuine_0043_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0044.png",
+    "output": "synthetic_genuine_0044_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0044.png",
+    "output": "synthetic_genuine_0044_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      183,
+      287,
+      244,
+      327
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0044.png",
+    "output": "synthetic_genuine_0044_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0045.png",
+    "output": "synthetic_genuine_0045_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      130,
+      165,
+      195,
+      199
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0045.png",
+    "output": "synthetic_genuine_0045_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Sanjay Mehta",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0045.png",
+    "output": "synthetic_genuine_0045_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0046.png",
+    "output": "synthetic_genuine_0046_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "30 Jun 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0046.png",
+    "output": "synthetic_genuine_0046_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0046.png",
+    "output": "synthetic_genuine_0046_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0047.png",
+    "output": "synthetic_genuine_0047_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0047.png",
+    "output": "synthetic_genuine_0047_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0047.png",
+    "output": "synthetic_genuine_0047_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0048.png",
+    "output": "synthetic_genuine_0048_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      142,
+      181,
+      247,
+      208
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0048.png",
+    "output": "synthetic_genuine_0048_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0048.png",
+    "output": "synthetic_genuine_0048_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "20 Nov 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0049.png",
+    "output": "synthetic_genuine_0049_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0049.png",
+    "output": "synthetic_genuine_0049_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0049.png",
+    "output": "synthetic_genuine_0049_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0050.png",
+    "output": "synthetic_genuine_0050_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0050.png",
+    "output": "synthetic_genuine_0050_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0050.png",
+    "output": "synthetic_genuine_0050_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      141,
+      234,
+      217,
+      270
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0051.png",
+    "output": "synthetic_genuine_0051_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0051.png",
+    "output": "synthetic_genuine_0051_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0051.png",
+    "output": "synthetic_genuine_0051_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0052.png",
+    "output": "synthetic_genuine_0052_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0052.png",
+    "output": "synthetic_genuine_0052_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      142,
+      275,
+      253,
+      306
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0052.png",
+    "output": "synthetic_genuine_0052_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0053.png",
+    "output": "synthetic_genuine_0053_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0053.png",
+    "output": "synthetic_genuine_0053_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0053.png",
+    "output": "synthetic_genuine_0053_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      101,
+      215,
+      196,
+      241
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0054.png",
+    "output": "synthetic_genuine_0054_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0054.png",
+    "output": "synthetic_genuine_0054_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      189,
+      256,
+      306,
+      294
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0054.png",
+    "output": "synthetic_genuine_0054_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0055.png",
+    "output": "synthetic_genuine_0055_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0055.png",
+    "output": "synthetic_genuine_0055_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0055.png",
+    "output": "synthetic_genuine_0055_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      181,
+      170,
+      276,
+      197
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0056.png",
+    "output": "synthetic_genuine_0056_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      111,
+      257,
+      196,
+      291
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0056.png",
+    "output": "synthetic_genuine_0056_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0056.png",
+    "output": "synthetic_genuine_0056_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0057.png",
+    "output": "synthetic_genuine_0057_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      120,
+      166,
+      205,
+      200
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0057.png",
+    "output": "synthetic_genuine_0057_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0057.png",
+    "output": "synthetic_genuine_0057_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Meera Iyer",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0058.png",
+    "output": "synthetic_genuine_0058_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0058.png",
+    "output": "synthetic_genuine_0058_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "20 Nov 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0058.png",
+    "output": "synthetic_genuine_0058_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      123,
+      193,
+      232,
+      215
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0059.png",
+    "output": "synthetic_genuine_0059_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0059.png",
+    "output": "synthetic_genuine_0059_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      100,
+      231,
+      169,
+      270
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0059.png",
+    "output": "synthetic_genuine_0059_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0000.png",
+    "output": "synthetic_genuine_0000_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0001.png",
+    "output": "synthetic_genuine_0001_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0002.png",
+    "output": "synthetic_genuine_0002_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0003.png",
+    "output": "synthetic_genuine_0003_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0004.png",
+    "output": "synthetic_genuine_0004_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0005.png",
+    "output": "synthetic_genuine_0005_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0006.png",
+    "output": "synthetic_genuine_0006_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      133,
+      159,
+      230,
+      182
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0008.png",
+    "output": "synthetic_genuine_0008_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      129,
+      233,
+      208,
+      267
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0009.png",
+    "output": "synthetic_genuine_0009_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      183,
+      300,
+      255,
+      323
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0010.png",
+    "output": "synthetic_genuine_0010_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0012.png",
+    "output": "synthetic_genuine_0012_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "28 Feb 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0013.png",
+    "output": "synthetic_genuine_0013_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0014.png",
+    "output": "synthetic_genuine_0014_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      197,
+      206,
+      295,
+      231
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0015.png",
+    "output": "synthetic_genuine_0015_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0016.png",
+    "output": "synthetic_genuine_0016_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      199,
+      155,
+      285,
+      178
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0017.png",
+    "output": "synthetic_genuine_0017_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 25000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0018.png",
+    "output": "synthetic_genuine_0018_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0019.png",
+    "output": "synthetic_genuine_0019_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0020.png",
+    "output": "synthetic_genuine_0020_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0022.png",
+    "output": "synthetic_genuine_0022_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      175,
+      274,
+      263,
+      300
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0023.png",
+    "output": "synthetic_genuine_0023_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0024.png",
+    "output": "synthetic_genuine_0024_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0025.png",
+    "output": "synthetic_genuine_0025_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0027.png",
+    "output": "synthetic_genuine_0027_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 100000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0028.png",
+    "output": "synthetic_genuine_0028_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0029.png",
+    "output": "synthetic_genuine_0029_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0030.png",
+    "output": "synthetic_genuine_0030_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      159,
+      215,
+      273,
+      242
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0031.png",
+    "output": "synthetic_genuine_0031_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      102,
+      271,
+      194,
+      293
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0032.png",
+    "output": "synthetic_genuine_0032_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      181,
+      235,
+      269,
+      258
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0035.png",
+    "output": "synthetic_genuine_0035_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0037.png",
+    "output": "synthetic_genuine_0037_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0040.png",
+    "output": "synthetic_genuine_0040_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 10000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0041.png",
+    "output": "synthetic_genuine_0041_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Arun Pillai",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0042.png",
+    "output": "synthetic_genuine_0042_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Meera Iyer",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0043.png",
+    "output": "synthetic_genuine_0043_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 50000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0047.png",
+    "output": "synthetic_genuine_0047_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      143,
+      278,
+      230,
+      304
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0048.png",
+    "output": "synthetic_genuine_0048_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Sanjay Mehta",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0049.png",
+    "output": "synthetic_genuine_0049_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      124,
+      245,
+      236,
+      269
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0050.png",
+    "output": "synthetic_genuine_0050_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "01 Jan 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0051.png",
+    "output": "synthetic_genuine_0051_region_overlay.png",
+    "type": "region_overlay",
+    "region": [
+      159,
+      258,
+      234,
+      285
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0052.png",
+    "output": "synthetic_genuine_0052_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "15 Mar 2026",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0053.png",
+    "output": "synthetic_genuine_0053_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Sanjay Mehta",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0055.png",
+    "output": "synthetic_genuine_0055_amount_modification.png",
+    "type": "amount_modification",
+    "original_amount": 500,
+    "new_amount": 75000,
+    "region": [
+      100,
+      200,
+      300,
+      250
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0056.png",
+    "output": "synthetic_genuine_0056_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Divya Krishnan",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0057.png",
+    "output": "synthetic_genuine_0057_date_modification.png",
+    "type": "date_modification",
+    "original_date": "17 Aug 2026",
+    "new_date": "05 Dec 2025",
+    "region": [
+      20,
+      420,
+      380,
+      450
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0058.png",
+    "output": "synthetic_genuine_0058_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Rohit Bansal",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  },
+  {
+    "source": "synthetic_genuine_0059.png",
+    "output": "synthetic_genuine_0059_name_modification.png",
+    "type": "name_modification",
+    "original_name": "",
+    "new_name": "Kavita Joshi",
+    "region": [
+      20,
+      330,
+      380,
+      360
+    ]
+  }
+]
