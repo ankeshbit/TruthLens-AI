@@ -38,13 +38,14 @@ export function AnalyzingPage({ step }: AnalyzingPageProps) {
 
         {/* Main circle */}
         <div className="absolute inset-0 rounded-full bg-brand-500/10 border border-brand-500/40 
-                        flex items-center justify-center">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-          >
-            <Eye className="w-12 h-12 text-brand-400" />
-          </motion.div>
+                        flex items-center justify-center p-4 overflow-hidden">
+          <motion.img
+            src="/logo.png"
+            alt="Scanning..."
+            className="w-full h-full object-contain"
+            animate={{ scale: [0.9, 1.05, 0.9], opacity: [0.8, 1, 0.8] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </div>
 
         {/* Scan line */}

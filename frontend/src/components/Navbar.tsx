@@ -1,4 +1,4 @@
-import { Shield, History, Eye, Home } from 'lucide-react';
+import { Shield, History, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface NavbarProps {
@@ -20,11 +20,11 @@ export function Navbar({ currentPage, onPageChange, onReset }: NavbarProps) {
             whileTap={{ scale: 0.98 }}
           >
             <div className="relative">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 
-                              flex items-center justify-center shadow-lg shadow-brand-500/20
-                              group-hover:shadow-brand-500/40 transition-shadow">
-                <Eye className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="VeriShot AI Logo"
+                className="w-10 h-10 rounded-xl object-contain shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-shadow"
+              />
               <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full 
                               border-2 border-surface-950 animate-pulse" />
             </div>

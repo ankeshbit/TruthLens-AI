@@ -109,10 +109,26 @@ export function UploadPage({ onFileUpload, error }: UploadPageProps) {
           </span>
         </motion.div>
 
-        <h1 className="text-5xl sm:text-6xl font-bold mb-4 leading-tight">
-          <span className="text-gradient-brand">VeriShot</span>
-          <span className="text-white"> AI</span>
-        </h1>
+        {/* Logo and Hero Title */}
+        <div className="flex flex-col items-center justify-center mb-4">
+          <motion.div
+            className="relative mb-5"
+            whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/30 to-brand-500/30 rounded-3xl blur-xl opacity-75 animate-pulse" />
+            <img
+              src="/logo.png"
+              alt="VeriShot AI Logo"
+              className="relative w-28 h-28 object-contain drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]"
+            />
+          </motion.div>
+
+          <h1 className="text-5xl sm:text-6xl font-bold mb-2 leading-tight">
+            <span className="text-gradient-brand">VeriShot</span>
+            <span className="text-white"> AI</span>
+          </h1>
+        </div>
         <p className="text-2xl font-light text-surface-300 mb-3">
           Verify before you trust.
         </p>
