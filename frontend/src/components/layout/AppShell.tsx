@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
 import { getHealth } from '../../services/api';
+import LightTunnel from '../ui/LightTunnel';
 
 type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
 
@@ -34,6 +35,48 @@ export function AppShell({ currentPage, onPageChange, onReset, analysisStatus, c
 
   return (
     <div className="flex h-screen overflow-hidden bg-app">
+      {/* LightTunnel WebGL background */}
+      <div
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+        aria-hidden="true"
+      >
+        <LightTunnel
+          cableColor="#4F7CFF"
+          pulseColor="#85A8FF"
+          tunnelColor="#4F7CFF"
+          tunnelOpacity={0}
+          speed={0.07}
+          flowDirection="outward"
+          pulseSpeed={1.6}
+          pulseLength={0.26}
+          pulseBlend={1}
+          pulseWidth={1}
+          cableCount={20}
+          thickness={0.28}
+          rimWidth={0.16}
+          waviness={0.32}
+          sway={0.38}
+          size={1.1}
+          glow={0.85}
+          fadeNear={0.5}
+          fadeFar={2}
+          brightness={0.7}
+          colorVariance={true}
+          grain={true}
+          grainIntensity={0.035}
+          opacity={0.55}
+          mouseInteraction={true}
+          mouseStrength={0.07}
+        />
+      </div>
+
+      {/* Sidebar + content on top */}
+      <div className="flex h-screen overflow-hidden w-full" style={{ position: 'relative', zIndex: 1 }}>
       <Sidebar
         currentPage={currentPage}
         onPageChange={onPageChange}
@@ -58,6 +101,7 @@ export function AppShell({ currentPage, onPageChange, onReset, analysisStatus, c
             {children}
           </div>
         </main>
+      </div>
       </div>
     </div>
   );
