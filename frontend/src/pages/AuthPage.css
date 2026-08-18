@@ -1,0 +1,364 @@
+/* From Uiverse.io by pharmacist-sabot - adapted for VeriShot AI */
+
+/* --- Root Variables for the component --- */
+.glitch-form-wrapper {
+  --bg-color: #0c0f17;
+  --primary-color: #00f2ea;
+  --secondary-color: #4F7CFF;
+  --text-color: #e5e5e5;
+  --font-family: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+  --glitch-anim-duration: 0.5s;
+}
+
+.glitch-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  width: 100%;
+  padding: 1rem 0;
+}
+
+/* --- Card Structure --- */
+.glitch-card {
+  background-color: var(--bg-color);
+  width: 100%;
+  max-width: 440px;
+  border: 1px solid rgba(0, 242, 234, 0.25);
+  box-shadow:
+    0 0 25px rgba(0, 242, 234, 0.12),
+    inset 0 0 15px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(12px);
+}
+
+.glitch-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.75em 1.2em;
+  border-bottom: 1px solid rgba(0, 242, 234, 0.2);
+}
+
+.glitch-card .card-title {
+  color: var(--primary-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.glitch-card .card-title svg {
+  width: 1.3em;
+  height: 1.3em;
+  stroke: var(--primary-color);
+}
+
+.glitch-card .card-dots {
+  display: flex;
+  align-items: center;
+}
+
+.glitch-card .card-dots span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 242, 234, 0.3);
+  margin-left: 6px;
+  box-shadow: 0 0 5px rgba(0, 242, 234, 0.2);
+}
+
+.glitch-card .card-dots span:nth-child(1) { background-color: #ef4444; }
+.glitch-card .card-dots span:nth-child(2) { background-color: #f59e0b; }
+.glitch-card .card-dots span:nth-child(3) { background-color: #22c55e; }
+
+.glitch-card .card-body {
+  padding: 1.75rem;
+}
+
+/* --- Mode Tabs --- */
+.glitch-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 242, 234, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.glitch-tab-btn {
+  flex: 1;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8892b0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-family);
+}
+
+.glitch-tab-btn:hover {
+  color: var(--primary-color);
+  background: rgba(0, 242, 234, 0.05);
+}
+
+.glitch-tab-btn.active {
+  color: #000;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 242, 234, 0.4);
+}
+
+/* --- Form Elements --- */
+.glitch-card .form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.glitch-card .form-label {
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  opacity: 0.65;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-family: var(--font-family);
+}
+
+.glitch-card .form-group input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0, 242, 234, 0.3);
+  padding: 0.75em 0;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.glitch-card .form-group input:focus {
+  border-color: var(--primary-color);
+}
+
+.glitch-card .form-group input:focus + .form-label,
+.glitch-card .form-group input:not(:placeholder-shown) + .form-label {
+  top: -1.2em;
+  font-size: 0.75rem;
+  opacity: 1;
+}
+
+.glitch-card .form-group input:focus + .form-label::before,
+.glitch-card .form-group input:focus + .form-label::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+}
+
+.glitch-card .form-group input:focus + .form-label::before {
+  color: var(--secondary-color);
+  animation: glitch-anim var(--glitch-anim-duration)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.glitch-card .form-group input:focus + .form-label::after {
+  color: var(--primary-color);
+  animation: glitch-anim var(--glitch-anim-duration)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-5px, 3px);
+    clip-path: inset(50% 0 20% 0);
+  }
+  40% {
+    transform: translate(3px, -2px);
+    clip-path: inset(20% 0 60% 0);
+  }
+  60% {
+    transform: translate(-4px, 2px);
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    transform: translate(4px, -3px);
+    clip-path: inset(30% 0 45% 0);
+  }
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* --- Password Toggle Eye --- */
+.glitch-pwd-toggle {
+  position: absolute;
+  right: 0;
+  top: 0.75em;
+  background: transparent;
+  border: none;
+  color: rgba(0, 242, 234, 0.6);
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.2em;
+}
+
+.glitch-pwd-toggle:hover {
+  color: var(--primary-color);
+}
+
+/* --- Button Styling --- */
+.glitch-card .submit-btn {
+  width: 100%;
+  padding: 0.8em;
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.glitch-card .submit-btn:hover,
+.glitch-card .submit-btn:focus {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 25px var(--primary-color);
+  outline: none;
+}
+
+.glitch-card .submit-btn:active {
+  transform: scale(0.97);
+}
+
+.glitch-card .submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Glitch Effect for Button --- */
+.glitch-card .submit-btn .btn-text {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.glitch-card .submit-btn:hover .btn-text {
+  opacity: 0;
+}
+
+.glitch-card .submit-btn::before,
+.glitch-card .submit-btn::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  background-color: var(--primary-color);
+  transition: opacity 0.2s ease;
+}
+
+.glitch-card .submit-btn:hover::before,
+.glitch-card .submit-btn:focus::before {
+  opacity: 1;
+  color: var(--secondary-color);
+  animation: glitch-anim var(--glitch-anim-duration)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.glitch-card .submit-btn:hover::after,
+.glitch-card .submit-btn:focus::after {
+  opacity: 1;
+  color: var(--bg-color);
+  animation: glitch-anim var(--glitch-anim-duration)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+/* --- OAuth cyber buttons --- */
+.glitch-oauth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.6em 1em;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 242, 234, 0.25);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.glitch-oauth-btn:hover {
+  border-color: var(--primary-color);
+  background: rgba(0, 242, 234, 0.08);
+  box-shadow: 0 0 12px rgba(0, 242, 234, 0.2);
+}
+
+.glitch-oauth-btn:active {
+  transform: scale(0.98);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-card .form-group input:focus + .form-label::before,
+  .glitch-card .form-group input:focus + .form-label::after,
+  .glitch-card .submit-btn:hover::before,
+  .glitch-card .submit-btn:focus::before,
+  .glitch-card .submit-btn:hover::after,
+  .glitch-card .submit-btn:focus::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .glitch-card .submit-btn:hover .btn-text {
+    opacity: 1;
+  }
+}
