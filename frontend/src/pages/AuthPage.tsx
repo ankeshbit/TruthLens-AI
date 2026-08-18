@@ -110,7 +110,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
               <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
               <path d="M12 11.5a3 3 0 0 0 -3 2.824v1.176a3 3 0 0 0 6 0v-1.176a3 3 0 0 0 -3 -2.824z"></path>
             </svg>
-            <span>VERISHOT // SECURE_AUTH</span>
+            <span>VERISHOT SECURE_DATA</span>
           </div>
 
           <div className="card-dots">
@@ -139,14 +139,14 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
                 className={`glitch-tab-btn ${mode === 'signin' ? 'active' : ''}`}
                 onClick={() => { setMode('signin'); clearMessages(); }}
               >
-                // SIGN_IN
+                SIGN_IN
               </button>
               <button
                 type="button"
                 className={`glitch-tab-btn ${mode === 'signup' ? 'active' : ''}`}
                 onClick={() => { setMode('signup'); clearMessages(); }}
               >
-                // REGISTER
+                REGISTER
               </button>
             </div>
           )}
@@ -169,7 +169,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
           {mode === 'signup' && (
             <div className="form-group">
               <label htmlFor="fullName" className="form-label" data-text="ANALYST_NAME">
-                // ANALYST_NAME
+                ANALYST_NAME
               </label>
               <div className="input-container">
                 <input
@@ -189,7 +189,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
           {/* Username / Email */}
           <div className="form-group">
             <label htmlFor="username" className="form-label" data-text="IDENTITY_EMAIL">
-              // IDENTITY_EMAIL
+              IDENTITY_EMAIL
             </label>
             <div className="input-container">
               <input
@@ -209,7 +209,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
           {mode !== 'forgot_password' && (
             <div className="form-group">
               <label htmlFor="password" className="form-label" data-text="ACCESS_KEY">
-                // ACCESS_KEY
+                ACCESS_KEY
               </label>
               <div className="input-container">
                 <input
@@ -238,7 +238,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
           {mode === 'signup' && (
             <div className="form-group">
               <label htmlFor="confirmPassword" className="form-label" data-text="CONFIRM_KEY">
-                // CONFIRM_KEY
+                CONFIRM_KEY
               </label>
               <div className="input-container">
                 <input
@@ -295,7 +295,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
           {mode !== 'forgot_password' && (
             <div className="mt-5 pt-4 border-t border-[rgba(0,242,234,0.15)]">
               <div className="text-center text-[10px] uppercase font-mono tracking-widest text-slate-400 mb-3">
-                // EXTERNAL_PROVIDER
+                EXTERNAL_PROVIDER
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button
