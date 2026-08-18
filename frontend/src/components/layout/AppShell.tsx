@@ -34,7 +34,8 @@ export function AppShell({ currentPage, onPageChange, onReset, analysisStatus, c
   }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-app">
+    /* No solid background on root — the fixed WebGL canvas shows through */
+    <div className="flex h-screen overflow-hidden" style={{ background: 'transparent' }}>
       {/* LightTunnel WebGL background */}
       <div
         style={{
@@ -42,6 +43,8 @@ export function AppShell({ currentPage, onPageChange, onReset, analysisStatus, c
           inset: 0,
           zIndex: 0,
           pointerEvents: 'none',
+          /* Dark base so canvas renders against near-black, not pure white */
+          background: '#090B0F',
         }}
         aria-hidden="true"
       >
@@ -75,33 +78,36 @@ export function AppShell({ currentPage, onPageChange, onReset, analysisStatus, c
         />
       </div>
 
-      {/* Sidebar + content on top */}
-      <div className="flex h-screen overflow-hidden w-full" style={{ position: 'relative', zIndex: 1 }}>
-      <Sidebar
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-        onReset={onReset}
-        engineOnline={engineOnline}
-      />
-
-      {/* Main area */}
-      <div className="flex flex-col flex-1 overflow-hidden min-w-0">
-        <Topbar
+      {/* Sidebar + content — above the canvas */}
+      <div
+        className="flex h-screen overflow-hidden w-full"
+        style={{ position: 'relative', zIndex: 1, background: 'transparent' }}
+      >
+        <Sidebar
           currentPage={currentPage}
-          analysisStatus={analysisStatus}
-          engineOnline={engineOnline}
           onPageChange={onPageChange}
+          onReset={onReset}
+          engineOnline={engineOnline}
         />
 
-        <main
-          className="flex-1 overflow-y-auto"
-          style={{ background: 'var(--bg)' }}
-        >
-          <div className="max-w-screen-xl mx-auto px-5 py-6 lg:px-8">
-            {children}
-          </div>
-        </main>
-      </div>
+        {/* Main area */}
+        <div className="flex flex-col flex-1 overflow-hidden min-w-0">
+          <Topbar
+            currentPage={currentPage}
+            analysisStatus={analysisStatus}
+            engineOnline={engineOnline}
+            onPageChange={onPageChange}
+          />
+
+          <main
+            className="flex-1 overflow-y-auto"
+            style={{ background: 'transparent' }}
+          >
+            <div className="max-w-screen-xl mx-auto px-5 py-6 lg:px-8">
+              {children}
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );
