@@ -3,8 +3,7 @@ import {
   ScanSearch, History, Settings, Info,
   ChevronRight, Menu, X
 } from 'lucide-react';
-
-type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
+import type { Page } from '../../types';
 
 interface SidebarProps {
   currentPage: Page;

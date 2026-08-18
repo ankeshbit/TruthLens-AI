@@ -20,10 +20,10 @@ const MODULES = [
 ];
 
 export function UploadPage({ onFileUpload, error }: UploadPageProps) {
-  const [dragActive, setDragActive]         = useState(false);
-  const [preview, setPreview]               = useState<string | null>(null);
+  const [dragActive, setDragActive] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
-  const [selectedFile, setSelectedFile]     = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Cleanup URL on unmount
@@ -249,12 +249,12 @@ export function UploadPage({ onFileUpload, error }: UploadPageProps) {
           </div>
           <div className="p-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
             {[
-              ['ELA Analysis',         'Error Level Analysis detects JPEG compression inconsistencies'],
-              ['Noise Analysis',       'Spatial noise pattern variance detection'],
-              ['OCR Extraction',       'Text region extraction and confidence scoring'],
-              ['Layout Analysis',      'Document structure and region anomalies'],
-              ['Metadata Extraction',  'EXIF data, software signatures, timestamps'],
-              ['ML Detection',         'Trained manipulation classifier (when available)'],
+              ['ELA Analysis', 'Error Level Analysis detects JPEG compression inconsistencies'],
+              ['Noise Analysis', 'Spatial noise pattern variance detection'],
+              ['OCR Extraction', 'Text region extraction and confidence scoring'],
+              ['Layout Analysis', 'Document structure and region anomalies'],
+              ['Metadata Extraction', 'EXIF data, software signatures, timestamps'],
+              ['ML Detection', 'Trained manipulation classifier (when available)'],
             ].map(([name, desc]) => (
               <div key={name} className="p-3 rounded-md bg-[var(--surface)] border border-[var(--border)]">
                 <p className="text-[12px] font-medium text-[var(--text-secondary)] mb-0.5">{name}</p>

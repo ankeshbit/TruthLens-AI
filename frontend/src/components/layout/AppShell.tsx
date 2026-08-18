@@ -4,8 +4,7 @@ import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
 import { getHealth } from '../../services/api';
 import LightTunnel from '../ui/LightTunnel';
-
-type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
+import type { Page } from '../../types';
 
 interface AppShellProps {
   currentPage: Page;
@@ -96,7 +95,6 @@ export function AppShell({ currentPage, onPageChange, onReset, analysisStatus, c
             currentPage={currentPage}
             analysisStatus={analysisStatus}
             engineOnline={engineOnline}
-            onPageChange={onPageChange}
           />
 
           <main
