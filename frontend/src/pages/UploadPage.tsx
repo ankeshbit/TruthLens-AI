@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Upload, ImageIcon, AlertCircle, Zap, Shield, Eye, Activity } from 'lucide-react';
+import { Upload, ImageIcon, AlertCircle, X, ScanSearch, FileImage } from 'lucide-react';
 
 interface UploadPageProps {
   onFileUpload: (file: File) => void;
@@ -10,27 +9,33 @@ interface UploadPageProps {
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 const MAX_SIZE_MB = 20;
 
+// Forensic modules that will run — static display only
+const MODULES = [
+  'ELA Analysis',
+  'Noise Analysis',
+  'OCR Text Extraction',
+  'Layout Analysis',
+  'Metadata Extraction',
+  'ML Detection',
+];
+
 export function UploadPage({ onFileUpload, error }: UploadPageProps) {
-  const [dragActive, setDragActive] = useState(false);
-  const [preview, setPreview] = useState<string | null>(null);
+  const [dragActive, setDragActive]         = useState(false);
+  const [preview, setPreview]               = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile]     = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Cleanup preview on unmount
+  // Cleanup URL on unmount
   useEffect(() => {
-    return () => {
-      if (preview) URL.revokeObjectURL(preview);
-    };
+    return () => { if (preview) URL.revokeObjectURL(preview); };
   }, [preview]);
 
   const validateFile = (file: File): string | null => {
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      return `Unsupported format: ${file.type}. Please use PNG, JPG, or WebP.`;
-    }
-    if (file.size > MAX_SIZE_MB * 1024 * 1024) {
-      return `File too large (${(file.size / 1024 / 1024).toFixed(1)} MB). Maximum: ${MAX_SIZE_MB} MB.`;
-    }
+    if (!ALLOWED_TYPES.includes(file.type))
+      return `Unsupported format: ${file.type || 'unknown'}. Use PNG, JPG, or WebP.`;
+    if (file.size > MAX_SIZE_MB * 1024 * 1024)
+      return `File too large (${(file.size / 1024 / 1024).toFixed(1)} MB). Max ${MAX_SIZE_MB} MB.`;
     return null;
   };
 
@@ -44,18 +49,13 @@ export function UploadPage({ onFileUpload, error }: UploadPageProps) {
     }
     setValidationError(null);
     setSelectedFile(file);
-    const url = URL.createObjectURL(file);
-    setPreview(url);
+    setPreview(URL.createObjectURL(file));
   }, []);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === 'dragenter' || e.type === 'dragover') {
-      setDragActive(true);
-    } else {
-      setDragActive(false);
-    }
+    setDragActive(e.type === 'dragenter' || e.type === 'dragover');
   }, []);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
@@ -71,249 +71,209 @@ export function UploadPage({ onFileUpload, error }: UploadPageProps) {
     if (file) handleFile(file);
   }, [handleFile]);
 
-  const handleAnalyze = () => {
-    if (selectedFile) {
-      onFileUpload(selectedFile);
-    }
+  const clearFile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPreview(null);
+    setSelectedFile(null);
+    setValidationError(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.1 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  };
+  const displayError = validationError || error;
 
   return (
-    <motion.div
-      key="upload"
-      className="max-w-3xl mx-auto"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 0, y: -20 }}
-    >
-      {/* Hero Section */}
-      <motion.div className="text-center mb-12" variants={itemVariants}>
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                     bg-brand-500/10 border border-brand-500/20 mb-6"
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        >
-          <Activity className="w-4 h-4 text-brand-400" />
-          <span className="text-sm text-brand-300 font-medium">
-            AI-Powered Digital Forensics
-          </span>
-        </motion.div>
-
-        {/* Logo and Hero Title */}
-        <div className="flex flex-col items-center justify-center mb-4">
-          <motion.div
-            className="relative mb-5"
-            whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
-            transition={{ duration: 0.4 }}
-          >
-            <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/30 to-brand-500/30 rounded-3xl blur-xl opacity-75 animate-pulse" />
-            <img
-              src="/logo.png"
-              alt="VeriShot AI Logo"
-              className="relative w-28 h-28 object-contain drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]"
-            />
-          </motion.div>
-
-          <h1 className="text-5xl sm:text-6xl font-bold mb-2 leading-tight">
-            <span className="text-gradient-brand">VeriShot</span>
-            <span className="text-white"> AI</span>
-          </h1>
-        </div>
-        <p className="text-2xl font-light text-surface-300 mb-3">
-          Verify before you trust.
+    <div className="max-w-2xl mx-auto space-y-5">
+      {/* Page header */}
+      <div className="mb-6">
+        <h2 className="text-[22px] font-semibold text-[var(--text-primary)] leading-none">
+          Analyze Screenshot
+        </h2>
+        <p className="text-[13px] text-[var(--text-muted)] mt-1.5">
+          Upload a screenshot for multi-signal digital forensic analysis.
         </p>
-        <p className="text-surface-500 max-w-lg mx-auto leading-relaxed">
-          Upload a screenshot — payment confirmation, bank transaction, invoice, 
-          or receipt — for multi-signal forensic analysis.
-        </p>
-      </motion.div>
+      </div>
 
-      {/* Feature pills */}
-      <motion.div 
-        className="flex flex-wrap justify-center gap-3 mb-10"
-        variants={itemVariants}
+      {/* Upload zone */}
+      <div
+        className={`upload-zone ${dragActive ? 'drag-active' : ''}`}
+        style={{ minHeight: 280 }}
+        onDragEnter={handleDrag}
+        onDragLeave={handleDrag}
+        onDragOver={handleDrag}
+        onDrop={handleDrop}
+        onClick={() => !selectedFile && fileInputRef.current?.click()}
+        role="button"
+        tabIndex={0}
+        aria-label="Upload screenshot dropzone"
+        onKeyDown={(e) => e.key === 'Enter' && !selectedFile && fileInputRef.current?.click()}
       >
-        {[
-          { icon: <Eye className="w-3.5 h-3.5" />, label: 'ELA Analysis' },
-          { icon: <Zap className="w-3.5 h-3.5" />, label: 'AI Detection' },
-          { icon: <Shield className="w-3.5 h-3.5" />, label: 'OCR Forensics' },
-          { icon: <Activity className="w-3.5 h-3.5" />, label: 'Noise Analysis' },
-        ].map((f) => (
-          <div
-            key={f.label}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full
-                       bg-surface-800/80 border border-surface-700 
-                       text-surface-300 text-xs font-medium"
-          >
-            <span className="text-brand-400">{f.icon}</span>
-            {f.label}
-          </div>
-        ))}
-      </motion.div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          id="file-input"
+          accept="image/jpeg,image/jpg,image/png,image/webp"
+          onChange={handleInputChange}
+          className="hidden"
+          aria-label="File upload input"
+        />
 
-      {/* Upload Zone */}
-      <motion.div variants={itemVariants}>
-        <div
-          className={`upload-zone p-8 sm:p-12 text-center ${dragActive ? 'drag-active' : ''}`}
-          onDragEnter={handleDrag}
-          onDragLeave={handleDrag}
-          onDragOver={handleDrag}
-          onDrop={handleDrop}
-          onClick={() => !selectedFile && fileInputRef.current?.click()}
-        >
-          <input
-            ref={fileInputRef}
-            type="file"
-            id="file-input"
-            accept="image/jpeg,image/jpg,image/png,image/webp"
-            onChange={handleInputChange}
-            className="hidden"
-          />
-
-          {preview ? (
-            <div className="space-y-6">
-              {/* Preview */}
-              <div className="relative inline-block">
-                <img
-                  src={preview}
-                  alt="Upload preview"
-                  className="max-h-64 max-w-full object-contain rounded-xl 
-                             border border-surface-700 shadow-2xl mx-auto"
-                />
-                <button
-                  className="absolute -top-3 -right-3 w-7 h-7 rounded-full bg-surface-700 
-                             hover:bg-surface-600 border border-surface-600 
-                             flex items-center justify-center text-surface-300 text-sm
-                             transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setPreview(null);
-                    setSelectedFile(null);
-                    if (fileInputRef.current) fileInputRef.current.value = '';
-                  }}
-                >
-                  ✕
-                </button>
-              </div>
-              
-              {selectedFile && (
-                <p className="text-sm text-surface-400">
-                  {selectedFile.name} — {(selectedFile.size / 1024).toFixed(0)} KB
-                </p>
-              )}
-
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <motion.button
-                  id="analyze-btn"
-                  onClick={(e) => { e.stopPropagation(); handleAnalyze(); }}
-                  className="px-8 py-3 rounded-xl font-semibold text-white
-                             bg-gradient-to-r from-brand-600 to-brand-500
-                             hover:from-brand-500 hover:to-brand-400
-                             shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40
-                             transition-all duration-200"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Analyze Screenshot
-                </motion.button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setPreview(null);
-                    setSelectedFile(null);
-                    if (fileInputRef.current) fileInputRef.current.value = '';
-                  }}
-                  className="px-8 py-3 rounded-xl font-semibold text-surface-300
-                             bg-surface-800 hover:bg-surface-700 border border-surface-700
-                             transition-all duration-200"
-                >
-                  Change Image
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-6 py-4">
-              <motion.div
-                animate={{ 
-                  y: dragActive ? -8 : 0,
-                  scale: dragActive ? 1.1 : 1,
-                }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <div className="w-20 h-20 mx-auto rounded-2xl bg-brand-500/10 
-                                border border-brand-500/20 flex items-center justify-center
-                                group-hover:bg-brand-500/15 transition-colors">
-                  {dragActive ? (
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                    >
-                      <ImageIcon className="w-10 h-10 text-brand-400" />
-                    </motion.div>
-                  ) : (
-                    <Upload className="w-10 h-10 text-brand-400" />
-                  )}
-                </div>
-              </motion.div>
-
-              <div>
-                <p className="text-xl font-semibold text-surface-200 mb-2">
-                  {dragActive ? 'Drop your screenshot' : 'Drop screenshot here'}
-                </p>
-                <p className="text-surface-500 text-sm mb-1">or click to browse</p>
-                <p className="text-surface-600 text-xs">
-                  PNG • JPG • JPEG • WebP — max {MAX_SIZE_MB} MB
-                </p>
-              </div>
-
+        {preview && selectedFile ? (
+          /* ── File selected state ── */
+          <div className="flex flex-col md:flex-row gap-6 p-6">
+            {/* Image preview */}
+            <div className="relative flex-shrink-0 flex items-start">
+              <img
+                src={preview}
+                alt="Upload preview"
+                className="max-h-52 max-w-[260px] w-auto object-contain rounded border border-[var(--border)]"
+              />
               <button
-                id="browse-btn"
-                className="px-6 py-2.5 rounded-xl text-sm font-medium 
-                           text-brand-300 bg-brand-500/10 border border-brand-500/20
-                           hover:bg-brand-500/20 transition-all duration-200"
+                className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[var(--elevated)] border border-[var(--border)]
+                           flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                onClick={clearFile}
+                aria-label="Remove file"
               >
-                Browse Files
+                <X className="w-3 h-3" />
               </button>
             </div>
-          )}
-        </div>
-      </motion.div>
 
-      {/* Errors */}
-      {(validationError || error) && (
-        <motion.div
-          className="mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 
-                     flex items-start gap-3"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-          <p className="text-red-300 text-sm">{validationError || error}</p>
-        </motion.div>
+            {/* File info + actions */}
+            <div className="flex flex-col justify-between flex-1 min-w-0">
+              <div className="space-y-3">
+                <div>
+                  <p className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider font-medium mb-1">
+                    Selected File
+                  </p>
+                  <p className="text-[14px] font-medium text-[var(--text-primary)] truncate">
+                    {selectedFile.name}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                  <div>
+                    <span className="text-[11px] text-[var(--text-muted)]">Format</span>
+                    <p className="text-[12px] text-[var(--text-secondary)] font-mono">
+                      {selectedFile.type.split('/')[1].toUpperCase()}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-[11px] text-[var(--text-muted)]">Size</span>
+                    <p className="text-[12px] text-[var(--text-secondary)] font-mono">
+                      {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                    </p>
+                  </div>
+                </div>
+
+                {/* Forensic modules */}
+                <div>
+                  <p className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider font-medium mb-1.5">
+                    Analysis Modules
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {MODULES.map(m => (
+                      <span
+                        key={m}
+                        className="text-[11px] px-2 py-0.5 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]"
+                      >
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-2 mt-4">
+                <button
+                  id="analyze-btn"
+                  onClick={(e) => { e.stopPropagation(); onFileUpload(selectedFile); }}
+                  className="btn btn-primary"
+                  aria-label="Run forensic analysis"
+                >
+                  <ScanSearch className="w-4 h-4" />
+                  Run Forensic Analysis
+                </button>
+                <button
+                  onClick={clearFile}
+                  className="btn btn-secondary"
+                >
+                  Change File
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* ── Empty dropzone state ── */
+          <div className="flex flex-col items-center justify-center p-10 text-center" style={{ minHeight: 280 }}>
+            <div className="w-12 h-12 rounded-lg bg-[var(--elevated)] border border-[var(--border)] flex items-center justify-center mb-4">
+              {dragActive
+                ? <ImageIcon className="w-6 h-6 text-[var(--accent)]" />
+                : <Upload className="w-6 h-6 text-[var(--text-muted)]" />
+              }
+            </div>
+            <p className="text-[14px] font-medium text-[var(--text-secondary)] mb-1">
+              {dragActive ? 'Drop screenshot here' : 'Drop screenshot here'}
+            </p>
+            <p className="text-[12px] text-[var(--text-muted)] mb-4">
+              or click to browse files
+            </p>
+            <button
+              id="browse-btn"
+              className="btn btn-secondary text-xs"
+              onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }}
+            >
+              Browse Files
+            </button>
+            <p className="text-[11px] text-[var(--text-muted)] mt-3">
+              PNG · JPG · JPEG · WebP — max {MAX_SIZE_MB} MB
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Error */}
+      {displayError && (
+        <div className="flex items-start gap-2.5 p-3 rounded-lg bg-[var(--danger)]/8 border border-[var(--danger)]/20"
+          role="alert">
+          <AlertCircle className="w-4 h-4 text-[var(--danger)] mt-0.5 flex-shrink-0" />
+          <p className="text-[13px] text-[var(--danger)]">{displayError}</p>
+        </div>
+      )}
+
+      {/* Forensic modules reference (when no file selected) */}
+      {!selectedFile && (
+        <div className="panel">
+          <div className="panel-header">
+            <FileImage className="w-4 h-4 text-[var(--text-muted)]" />
+            <span className="text-[12px] font-medium text-[var(--text-secondary)]">
+              Forensic Modules
+            </span>
+          </div>
+          <div className="p-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {[
+              ['ELA Analysis',         'Error Level Analysis detects JPEG compression inconsistencies'],
+              ['Noise Analysis',       'Spatial noise pattern variance detection'],
+              ['OCR Extraction',       'Text region extraction and confidence scoring'],
+              ['Layout Analysis',      'Document structure and region anomalies'],
+              ['Metadata Extraction',  'EXIF data, software signatures, timestamps'],
+              ['ML Detection',         'Trained manipulation classifier (when available)'],
+            ].map(([name, desc]) => (
+              <div key={name} className="p-3 rounded-md bg-[var(--surface)] border border-[var(--border)]">
+                <p className="text-[12px] font-medium text-[var(--text-secondary)] mb-0.5">{name}</p>
+                <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
 
       {/* Disclaimer */}
-      <motion.div
-        className="mt-8 p-4 rounded-xl glass-lighter text-center"
-        variants={itemVariants}
-      >
-        <p className="text-surface-500 text-xs leading-relaxed">
-          <span className="text-surface-400 font-medium">Important:</span>{' '}
-          VeriShot AI provides a <strong className="text-surface-400">forensic risk assessment</strong>,
-          not definitive proof of authenticity or fraud. Results should be used as one 
-          factor among many in evaluating document authenticity.
+      <div className="disclaimer-bar" role="note">
+        <AlertCircle className="w-3.5 h-3.5 text-[var(--text-muted)] flex-shrink-0 mt-0.5" />
+        <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">
+          <strong className="text-[var(--text-secondary)] font-medium">Forensic Disclaimer:</strong>{' '}
+          VeriShot AI provides a risk assessment, not definitive proof of authenticity or fraud.
+          Results should be considered alongside other evidence.
         </p>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

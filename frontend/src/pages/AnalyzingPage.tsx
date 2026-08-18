@@ -1,109 +1,123 @@
-import { motion } from 'framer-motion';
-import { Eye, Activity, Zap, Shield, ScanLine } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { CheckCircle2, Circle, Loader2 } from 'lucide-react';
 
 interface AnalyzingPageProps {
   step: string;
 }
 
-const ANALYSIS_STEPS = [
-  { icon: <Shield className="w-4 h-4" />, label: 'Image validation' },
-  { icon: <Eye className="w-4 h-4" />, label: 'OCR text extraction' },
-  { icon: <Activity className="w-4 h-4" />, label: 'ELA forensic analysis' },
-  { icon: <Zap className="w-4 h-4" />, label: 'Noise pattern analysis' },
-  { icon: <ScanLine className="w-4 h-4" />, label: 'Metadata extraction' },
-  { icon: <Eye className="w-4 h-4" />, label: 'ML manipulation detection' },
-  { icon: <Activity className="w-4 h-4" />, label: 'Evidence fusion' },
+const STEPS = [
+  { id: 'validate',  label: 'Image Validation',         desc: 'Format check, size, corruption' },
+  { id: 'ocr',       label: 'OCR Text Extraction',       desc: 'Extracting text regions and confidence' },
+  { id: 'ela',       label: 'ELA Analysis',              desc: 'Error level analysis on JPEG blocks' },
+  { id: 'noise',     label: 'Noise Pattern Analysis',    desc: 'Spatial noise variance mapping' },
+  { id: 'layout',    label: 'Layout Analysis',           desc: 'Document structure detection' },
+  { id: 'metadata',  label: 'Metadata Extraction',       desc: 'EXIF, software tags, timestamps' },
+  { id: 'ml',        label: 'ML Manipulation Detection', desc: 'Classifier inference (if available)' },
+  { id: 'fusion',    label: 'Evidence Fusion',           desc: 'Aggregating signal scores' },
 ];
 
-export function AnalyzingPage({ step }: AnalyzingPageProps) {
-  return (
-    <motion.div
-      key="analyzing"
-      className="max-w-lg mx-auto text-center py-16"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {/* Animated scanner */}
-      <div className="relative w-32 h-32 mx-auto mb-10">
-        {/* Outer rings */}
-        {[1, 2, 3].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute inset-0 rounded-full border border-brand-500/30"
-            animate={{ scale: [1, 1 + i * 0.15], opacity: [0.6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, delay: i * 0.4, ease: 'easeOut' }}
-          />
-        ))}
+type StepState = 'done' | 'running' | 'pending';
 
-        {/* Main circle */}
-        <div className="absolute inset-0 rounded-full bg-brand-500/10 border border-brand-500/40 
-                        flex items-center justify-center p-4 overflow-hidden">
-          <motion.img
-            src="/logo.png"
-            alt="Scanning..."
-            className="w-full h-full object-contain"
-            animate={{ scale: [0.9, 1.05, 0.9], opacity: [0.8, 1, 0.8] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+export function AnalyzingPage({ step }: AnalyzingPageProps) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  // Auto-advance steps for UI feedback (backend handles real processing)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIdx(i => Math.min(i + 1, STEPS.length - 1));
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
+  const progress = Math.round(((activeIdx + 1) / STEPS.length) * 100);
+
+  const getStepState = (idx: number): StepState => {
+    if (idx < activeIdx) return 'done';
+    if (idx === activeIdx) return 'running';
+    return 'pending';
+  };
+
+  return (
+    <div className="max-w-xl mx-auto space-y-5">
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-[22px] font-semibold text-[var(--text-primary)] leading-none">
+          Forensic Analysis In Progress
+        </h2>
+        <p className="text-[13px] text-[var(--text-muted)] mt-1.5">
+          {step || 'Running multi-signal analysis…'}
+        </p>
+      </div>
+
+      {/* Overall progress */}
+      <div className="panel p-4">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[12px] text-[var(--text-muted)] font-medium">Overall Progress</span>
+          <span className="text-[12px] font-mono text-[var(--text-secondary)]">{progress}%</span>
+        </div>
+        <div className="progress-track" style={{ height: 5 }}>
+          <div
+            className="progress-fill"
+            style={{
+              width: `${progress}%`,
+              background: 'var(--accent)',
+              transition: 'width 0.6s ease',
+            }}
           />
         </div>
-
-        {/* Scan line */}
-        <motion.div
-          className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-brand-400 to-transparent"
-          animate={{ top: ['10%', '90%', '10%'] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        />
       </div>
 
-      <h2 className="text-2xl font-bold text-white mb-2">Analyzing Screenshot</h2>
-      <p className="text-surface-400 mb-10 text-sm">
-        {step || 'Running multi-signal forensic analysis...'}
+      {/* Step list */}
+      <div className="panel overflow-hidden">
+        {STEPS.map((s, idx) => {
+          const state = getStepState(idx);
+          return (
+            <div
+              key={s.id}
+              className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] last:border-b-0"
+              style={{ background: state === 'running' ? 'rgba(79,124,255,0.04)' : undefined }}
+            >
+              {/* Status icon */}
+              <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                {state === 'done' && (
+                  <CheckCircle2 className="w-4 h-4 text-[var(--success)]" />
+                )}
+                {state === 'running' && (
+                  <Loader2 className="w-4 h-4 text-[var(--accent)] animate-spin" />
+                )}
+                {state === 'pending' && (
+                  <Circle className="w-4 h-4 text-[var(--border)]" />
+                )}
+              </div>
+
+              {/* Labels */}
+              <div className="flex-1 min-w-0">
+                <p className={`text-[13px] font-medium leading-none ${
+                  state === 'done'    ? 'text-[var(--text-secondary)]' :
+                  state === 'running' ? 'text-[var(--text-primary)]' :
+                                        'text-[var(--text-muted)]'
+                }`}>
+                  {s.label}
+                </p>
+                <p className="text-[11px] text-[var(--text-muted)] mt-0.5 leading-none">{s.desc}</p>
+              </div>
+
+              {/* Right status text */}
+              <span className={`text-[11px] font-medium flex-shrink-0 ${
+                state === 'done'    ? 'text-[var(--success)]' :
+                state === 'running' ? 'text-[var(--accent)]' :
+                                      'text-[var(--text-muted)]'
+              }`}>
+                {state === 'done' ? 'Done' : state === 'running' ? 'Running' : '—'}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      <p className="text-[11px] text-[var(--text-muted)] text-center">
+        Analysis may take 10–30 seconds depending on image complexity.
       </p>
-
-      {/* Steps */}
-      <div className="space-y-3 text-left">
-        {ANALYSIS_STEPS.map((s, i) => (
-          <motion.div
-            key={s.label}
-            className="flex items-center gap-3 px-4 py-3 rounded-xl glass"
-            initial={{ opacity: 0.3, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.15, duration: 0.4 }}
-          >
-            <motion.div
-              className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-              animate={{
-                backgroundColor: ['rgba(99,102,241,0.1)', 'rgba(99,102,241,0.3)', 'rgba(34,197,94,0.1)'],
-              }}
-              transition={{ delay: i * 0.4 + 0.5, duration: 0.5 }}
-            >
-              <span className="text-brand-400">{s.icon}</span>
-            </motion.div>
-            <span className="text-surface-300 text-sm">{s.label}</span>
-            <motion.div
-              className="ml-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: i * 0.4 + 0.8 }}
-            >
-              <motion.div
-                className="w-4 h-4 border-2 border-brand-400 border-t-transparent rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              />
-            </motion.div>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.p
-        className="mt-8 text-surface-500 text-xs"
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        This may take 10–30 seconds...
-      </motion.p>
-    </motion.div>
+    </div>
   );
 }

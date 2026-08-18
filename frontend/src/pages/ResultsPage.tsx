@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  AlertTriangle, CheckCircle, AlertCircle,
-  RefreshCw, Eye, Zap, Activity, Shield,
-  ChevronDown, ChevronUp, Info, FileText,
-  Image as ImageIcon, BarChart2
+import {
+  RotateCcw, Image as ImageIcon, Activity, Eye, Maximize2,
+  AlertTriangle, CheckCircle2, XCircle, Info, FileText,
+  MapPin, Shield, AlertCircle, ChevronDown, ChevronRight,
+  BarChart3
 } from 'lucide-react';
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, 
+import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
          ResponsiveContainer, Tooltip } from 'recharts';
 import type { AnalysisResult, RiskLevel, ImageView } from '../types';
 import { RISK_LABELS, SCREENSHOT_TYPE_LABELS } from '../types';
@@ -17,472 +16,609 @@ interface ResultsPageProps {
   onReset: () => void;
 }
 
-// Signal level classification
-function getSignalLevel(score: number): { label: string; color: string; bg: string } {
-  if (score >= 0.65) return { label: 'HIGH', color: 'text-red-400', bg: 'bg-red-500/10' };
-  if (score >= 0.35) return { label: 'MEDIUM', color: 'text-amber-400', bg: 'bg-amber-500/10' };
-  return { label: 'NORMAL', color: 'text-green-400', bg: 'bg-green-500/10' };
+// ─── Helpers ───────────────────────────────────────────────────────
+function getRiskColor(level: RiskLevel) {
+  return level === 'likely_genuine'        ? 'var(--success)' :
+         level === 'suspicious'            ? 'var(--warning)' :
+                                             'var(--danger)';
 }
 
-function RiskGauge({ score, level }: { score: number; level: RiskLevel }) {
-  const color = level === 'likely_genuine' ? '#22c55e' 
-               : level === 'suspicious' ? '#f59e0b' 
-               : '#ef4444';
+function getSignalStatus(score: number, status: string): { label: string; color: string } {
+  if (status !== 'ok') return { label: 'N/A',    color: 'var(--text-muted)' };
+  if (score >= 0.65)   return { label: 'High',   color: 'var(--danger)' };
+  if (score >= 0.35)   return { label: 'Medium', color: 'var(--warning)' };
+  return               { label: 'Normal', color: 'var(--success)' };
+}
+
+function ScoreDisplay({ score, level }: { score: number; level: RiskLevel }) {
+  const color = getRiskColor(level);
+  const label = level === 'likely_genuine' ? 'LOW RISK' :
+                level === 'suspicious'     ? 'MODERATE RISK' :
+                                             'HIGH RISK';
+  const pct = (score / 100) * 100;
 
   return (
-    <div className="relative w-48 h-28 mx-auto">
-      {/* Gauge background arc */}
-      <svg viewBox="0 0 200 120" className="w-full h-full">
-        {/* Background track */}
-        <path
-          d="M 20 110 A 90 90 0 0 1 180 110"
-          fill="none"
-          stroke="rgba(51,65,85,0.8)"
-          strokeWidth="16"
-          strokeLinecap="round"
-        />
-        {/* Colored arc based on score */}
-        <motion.path
-          d="M 20 110 A 90 90 0 0 1 180 110"
-          fill="none"
-          stroke={color}
-          strokeWidth="16"
-          strokeLinecap="round"
-          strokeDasharray="283"
-          initial={{ strokeDashoffset: 283 }}
-          animate={{ strokeDashoffset: 283 - (score / 100) * 283 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
-          style={{ filter: `drop-shadow(0 0 6px ${color}60)` }}
-        />
-        {/* Zone markers */}
-        <text x="15" y="120" fill="#22c55e" fontSize="10" fontWeight="600">0</text>
-        <text x="92" y="25" fill="#f59e0b" fontSize="10" fontWeight="600" textAnchor="middle">50</text>
-        <text x="180" y="120" fill="#ef4444" fontSize="10" fontWeight="600">100</text>
-      </svg>
-
-      {/* Score display */}
-      <div className="absolute inset-0 flex flex-col items-center justify-end pb-2">
-        <motion.span
-          className="text-4xl font-bold"
-          style={{ color }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
+    <div className="flex items-center gap-6">
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-1">
+          Risk Score
+        </p>
+        <p className="text-[48px] font-bold leading-none tabular-nums" style={{ color }}>
           {score}
-        </motion.span>
-        <span className="text-xs text-surface-500">/ 100</span>
+        </p>
+        <p className="text-[12px] text-[var(--text-muted)] mt-0.5">/ 100</p>
+      </div>
+      <div className="flex-1 space-y-2">
+        <div className="flex items-center gap-2">
+          <span
+            className="text-[12px] font-bold tracking-wide"
+            style={{ color }}
+          >
+            {label}
+          </span>
+        </div>
+        <div className="progress-track" style={{ height: 6 }}>
+          <div
+            className="progress-fill"
+            style={{
+              width: `${pct}%`,
+              background: color,
+              transition: 'width 1s ease',
+            }}
+          />
+        </div>
+        <div className="flex justify-between text-[10px] text-[var(--text-muted)]">
+          <span>0 · Low</span>
+          <span>30</span>
+          <span>60</span>
+          <span>100 · High</span>
+        </div>
       </div>
     </div>
   );
 }
 
+// ─── Main Component ──────────────────────────────────────────────
 export function ResultsPage({ result, file, onReset }: ResultsPageProps) {
   const [imageView, setImageView] = useState<ImageView>('original');
-  const [showOCR, setShowOCR] = useState(false);
-  const [showExplanation, setShowExplanation] = useState(true);
+  const [evidenceOpen, setEvidenceOpen] = useState(true);
+  const [ocrOpen, setOcrOpen] = useState(false);
   const [originalUrl] = useState(() => URL.createObjectURL(file));
 
-  const riskColor = result.risk_level === 'likely_genuine' ? 'text-green-400'
-                  : result.risk_level === 'suspicious' ? 'text-amber-400'
-                  : 'text-red-400';
-  const riskBg = result.risk_level === 'likely_genuine' ? 'bg-green-500/10 border-green-500/20'
-               : result.risk_level === 'suspicious' ? 'bg-amber-500/10 border-amber-500/20'
-               : 'bg-red-500/10 border-red-500/20';
-  const RiskIcon = result.risk_level === 'likely_genuine' ? CheckCircle 
-                 : result.risk_level === 'suspicious' ? AlertTriangle 
-                 : AlertCircle;
+  const riskColor = getRiskColor(result.risk_level);
 
-  // Radar chart data
-  const radarData = [
-    { subject: 'ELA', value: Math.round(result.forensic_signals.ela_score * 100) },
-    { subject: 'Noise', value: Math.round(result.forensic_signals.noise_score * 100) },
-    { subject: 'Text', value: Math.round(result.forensic_signals.text_score * 100) },
-    { subject: 'Layout', value: Math.round(result.forensic_signals.layout_score * 100) },
-    { subject: 'ML', value: result.ml_score != null ? Math.round(result.ml_score * 100) : 0 },
-  ];
+  const RiskIcon =
+    result.risk_level === 'likely_genuine'        ? CheckCircle2 :
+    result.risk_level === 'suspicious'            ? AlertTriangle :
+                                                    XCircle;
 
   const currentImageSrc = (() => {
-    if (imageView === 'ela' && result.ela_image_b64) {
-      return `data:image/jpeg;base64,${result.ela_image_b64}`;
-    }
-    if (imageView === 'gradcam' && result.gradcam_image_b64) {
-      return `data:image/jpeg;base64,${result.gradcam_image_b64}`;
-    }
-    if (imageView === 'annotated' && result.annotated_image_b64) {
-      return `data:image/jpeg;base64,${result.annotated_image_b64}`;
-    }
+    if (imageView === 'ela'       && result.ela_image_b64)       return `data:image/jpeg;base64,${result.ela_image_b64}`;
+    if (imageView === 'gradcam'   && result.gradcam_image_b64)   return `data:image/jpeg;base64,${result.gradcam_image_b64}`;
+    if (imageView === 'annotated' && result.annotated_image_b64) return `data:image/jpeg;base64,${result.annotated_image_b64}`;
     return originalUrl;
   })();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  };
+  const radarData = [
+    { subject: 'ELA',    value: Math.round(result.forensic_signals.ela_score    * 100) },
+    { subject: 'Noise',  value: Math.round(result.forensic_signals.noise_score  * 100) },
+    { subject: 'Text',   value: Math.round(result.forensic_signals.text_score   * 100) },
+    { subject: 'Layout', value: Math.round(result.forensic_signals.layout_score * 100) },
+    { subject: 'ML',     value: result.ml_score != null ? Math.round(result.ml_score * 100) : 0 },
+  ];
+
+  const signals = [
+    { name: 'ELA Analysis',    score: result.forensic_signals.ela_score,    status: result.forensic_signals.ela_status,    desc: 'JPEG compression inconsistencies' },
+    { name: 'Noise Analysis',  score: result.forensic_signals.noise_score,  status: result.forensic_signals.noise_status,  desc: 'Spatial noise variance' },
+    { name: 'OCR Analysis',    score: result.forensic_signals.text_score,   status: result.forensic_signals.text_status,   desc: 'Text region anomalies' },
+    { name: 'Layout Analysis', score: result.forensic_signals.layout_score, status: result.forensic_signals.layout_status, desc: 'Structural anomalies' },
+  ];
 
   return (
-    <motion.div
-      key="results"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 0 }}
-      className="space-y-6"
-    >
-      {/* Header */}
-      <motion.div variants={itemVariants} className="flex items-center justify-between">
+    <div className="space-y-4 max-w-screen-lg">
+
+      {/* ── Page header ─── */}
+      <div className="flex items-start justify-between gap-4 mb-2">
         <div>
-          <p className="text-surface-500 text-sm mb-1">Analysis complete — {file.name}</p>
-          <h1 className="text-2xl font-bold text-white">Forensic Results</h1>
+          <h2 className="text-[20px] font-semibold text-[var(--text-primary)] leading-none">
+            Forensic Analysis Result
+          </h2>
+          <p className="text-[12px] text-[var(--text-muted)] mt-1">
+            {file.name} · {SCREENSHOT_TYPE_LABELS[result.screenshot_type]}
+          </p>
         </div>
         <button
           id="analyze-again-btn"
           onClick={onReset}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl
-                     bg-surface-800 hover:bg-surface-700 border border-surface-700
-                     text-surface-300 text-sm font-medium transition-all"
+          className="btn btn-secondary flex-shrink-0"
         >
-          <RefreshCw className="w-4 h-4" />
-          Analyze Again
+          <RotateCcw className="w-3.5 h-3.5" />
+          Analyze Another
         </button>
-      </motion.div>
+      </div>
 
-      {/* Main verdict card */}
-      <motion.div 
-        variants={itemVariants}
-        className={`glass rounded-2xl p-6 border ${riskBg}`}
+      {/* ── Risk Assessment ─── */}
+      <div
+        className="panel p-5"
+        style={{ borderLeft: `3px solid ${riskColor}` }}
       >
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="flex flex-col items-center gap-3">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: 'spring', stiffness: 200, delay: 0.3 }}
-            >
-              <RiskIcon className={`w-16 h-16 ${riskColor}`} />
-            </motion.div>
-            <div className="text-center">
-              <p className={`text-2xl font-bold ${riskColor}`}>
-                {RISK_LABELS[result.risk_level]}
-              </p>
-              <p className="text-surface-400 text-sm mt-1">
-                {SCREENSHOT_TYPE_LABELS[result.screenshot_type]}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex-1">
-            <RiskGauge score={result.risk_score} level={result.risk_level} />
-          </div>
-
-          <div className="flex flex-col gap-3 min-w-[160px]">
-            {[
-              { label: 'ELA', score: result.forensic_signals.ela_score, status: result.forensic_signals.ela_status },
-              { label: 'Noise', score: result.forensic_signals.noise_score, status: result.forensic_signals.noise_status },
-              { label: 'Text', score: result.forensic_signals.text_score, status: result.forensic_signals.text_status },
-              { label: 'Layout', score: result.forensic_signals.layout_score, status: result.forensic_signals.layout_status },
-            ].map((sig) => {
-              const level = sig.status !== 'ok' ? { label: 'N/A', color: 'text-surface-500', bg: 'bg-surface-800' }
-                           : getSignalLevel(sig.score);
-              return (
-                <div key={sig.label} className="flex items-center justify-between gap-3">
-                  <span className="text-surface-400 text-sm w-14">{sig.label}</span>
-                  <div className="flex-1 h-1.5 bg-surface-800 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full rounded-full"
-                      style={{ backgroundColor: level.color.replace('text-', '#').replace('red-400', 'ef4444').replace('amber-400', 'f59e0b').replace('green-400', '22c55e').replace('surface-500', '94a3b8') }}
-                      initial={{ width: 0 }}
-                      animate={{ width: sig.status === 'ok' ? `${sig.score * 100}%` : '0%' }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                    />
-                  </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded ${level.bg} ${level.color}`}>
-                    {level.label}
-                  </span>
-                </div>
-              );
-            })}
-
-            {/* ML score */}
-            <div className="flex items-center justify-between gap-3">
-              <span className="text-surface-400 text-sm w-14">ML</span>
-              {result.ml_available && result.ml_score != null ? (
-                <>
-                  <div className="flex-1 h-1.5 bg-surface-800 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full rounded-full bg-brand-400"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${result.ml_score * 100}%` }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                    />
-                  </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded
-                    ${getSignalLevel(result.ml_score).bg} ${getSignalLevel(result.ml_score).color}`}>
-                    {getSignalLevel(result.ml_score).label}
-                  </span>
-                </>
-              ) : (
-                <span className="text-surface-500 text-xs flex-1">Not available</span>
-              )}
-            </div>
-          </div>
+        <div className="flex items-center gap-2 mb-4">
+          <RiskIcon className="w-4 h-4" style={{ color: riskColor }} />
+          <span className="text-[12px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+            Risk Assessment
+          </span>
+          <span
+            className="ml-auto text-[11px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded"
+            style={{
+              color: riskColor,
+              background: `color-mix(in srgb, ${riskColor} 10%, transparent)`,
+              border: `1px solid color-mix(in srgb, ${riskColor} 25%, transparent)`,
+            }}
+          >
+            {RISK_LABELS[result.risk_level]}
+          </span>
         </div>
-      </motion.div>
+        <ScoreDisplay score={result.risk_score} level={result.risk_level} />
+      </div>
 
-      {/* 3-column grid: Image, Radar, Suspicious Regions */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Image Viewer */}
-        <motion.div variants={itemVariants} className="lg:col-span-2 glass rounded-2xl overflow-hidden">
-          {/* View selector */}
-          <div className="flex items-center gap-1 p-3 border-b border-surface-800/60">
-            {[
-              { id: 'original' as ImageView, label: 'Original', icon: <ImageIcon className="w-3.5 h-3.5" /> },
-              { id: 'ela' as ImageView, label: 'ELA', icon: <Activity className="w-3.5 h-3.5" />, disabled: !result.ela_image_b64 },
-              { id: 'gradcam' as ImageView, label: 'Grad-CAM', icon: <Eye className="w-3.5 h-3.5" />, disabled: !result.gradcam_image_b64 },
-              { id: 'annotated' as ImageView, label: 'Regions', icon: <Zap className="w-3.5 h-3.5" />, disabled: !result.annotated_image_b64 },
-            ].map((view) => (
-              <button
-                key={view.id}
-                id={`view-${view.id}`}
-                onClick={() => !view.disabled && setImageView(view.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
-                           transition-all ${view.disabled ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'}
-                           ${imageView === view.id 
-                             ? 'bg-brand-500/20 text-brand-300 border border-brand-500/30' 
-                             : 'text-surface-400 hover:text-surface-200 hover:bg-surface-800'}`}
-              >
-                {view.icon}
-                {view.label}
-              </button>
-            ))}
+      {/* ── Two-column: Signals table + Signal radar ─── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+        {/* Signal table */}
+        <div className="panel lg:col-span-2 overflow-hidden">
+          <div className="panel-header">
+            <BarChart3 className="w-4 h-4 text-[var(--text-muted)]" />
+            <span className="text-[12px] font-medium text-[var(--text-secondary)]">Forensic Signals</span>
           </div>
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-[var(--border)]">
+                <th className="text-left px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Signal</th>
+                <th className="text-left px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Score</th>
+                <th className="px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]"></th>
+                <th className="text-right px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {signals.map(sig => {
+                const ss = getSignalStatus(sig.score, sig.status);
+                const scoreVal = sig.status === 'ok' ? Math.round(sig.score * 100) : null;
+                return (
+                  <tr key={sig.name} className="border-b border-[var(--border)] last:border-b-0 hover:bg-white/[0.02]">
+                    <td className="px-4 py-3">
+                      <p className="text-[13px] font-medium text-[var(--text-secondary)]">{sig.name}</p>
+                      <p className="text-[11px] text-[var(--text-muted)]">{sig.desc}</p>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className="text-[14px] font-mono font-semibold text-[var(--text-primary)]">
+                        {scoreVal !== null ? scoreVal : '—'}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 w-32">
+                      {scoreVal !== null && (
+                        <div className="progress-track" style={{ height: 4 }}>
+                          <div
+                            className="progress-fill"
+                            style={{ width: `${scoreVal}%`, background: ss.color }}
+                          />
+                        </div>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <span
+                        className="text-[11px] font-semibold px-2 py-0.5 rounded"
+                        style={{
+                          color: ss.color,
+                          background: `color-mix(in srgb, ${ss.color} 10%, transparent)`,
+                        }}
+                      >
+                        {ss.label}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+              {/* ML row */}
+              <tr className="hover:bg-white/[0.02]">
+                <td className="px-4 py-3">
+                  <p className="text-[13px] font-medium text-[var(--text-secondary)]">ML Detection</p>
+                  <p className="text-[11px] text-[var(--text-muted)]">Manipulation classifier</p>
+                </td>
+                <td className="px-4 py-3">
+                  <span className="text-[14px] font-mono font-semibold text-[var(--text-primary)]">
+                    {result.ml_available && result.ml_score != null
+                      ? Math.round(result.ml_score * 100)
+                      : '—'}
+                  </span>
+                </td>
+                <td className="px-4 py-3 w-32">
+                  {result.ml_available && result.ml_score != null && (
+                    <div className="progress-track" style={{ height: 4 }}>
+                      <div
+                        className="progress-fill"
+                        style={{
+                          width: `${Math.round(result.ml_score * 100)}%`,
+                          background: getSignalStatus(result.ml_score, 'ok').color,
+                        }}
+                      />
+                    </div>
+                  )}
+                </td>
+                <td className="px-4 py-3 text-right">
+                  {result.ml_available && result.ml_score != null ? (
+                    <span
+                      className="text-[11px] font-semibold px-2 py-0.5 rounded"
+                      style={{
+                        color: getSignalStatus(result.ml_score, 'ok').color,
+                        background: `color-mix(in srgb, ${getSignalStatus(result.ml_score, 'ok').color} 10%, transparent)`,
+                      }}
+                    >
+                      {getSignalStatus(result.ml_score, 'ok').label}
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-[var(--text-muted)]">Unavailable</span>
+                  )}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-          <div className="p-4 bg-surface-950/50 min-h-64 flex items-center justify-center">
-            <motion.img
-              key={imageView}
-              src={currentImageSrc}
-              alt={`${imageView} view`}
-              className="max-h-96 max-w-full object-contain rounded-xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
+        {/* Radar chart */}
+        <div className="panel overflow-hidden">
+          <div className="panel-header">
+            <Activity className="w-4 h-4 text-[var(--text-muted)]" />
+            <span className="text-[12px] font-medium text-[var(--text-secondary)]">Signal Radar</span>
           </div>
-
-          {imageView !== 'original' && (
-            <div className="px-4 pb-3 text-xs text-surface-500 text-center">
-              {imageView === 'ela' && 'ELA: Bright areas indicate different compression history'}
-              {imageView === 'gradcam' && 'Grad-CAM: Model attention (not proof of manipulation)'}
-              {imageView === 'annotated' && 'Annotated: Suspected high-risk regions highlighted'}
-            </div>
-          )}
-        </motion.div>
-
-        {/* Radar + Suspicious Regions */}
-        <div className="space-y-6">
-          {/* Radar chart */}
-          <motion.div variants={itemVariants} className="glass rounded-2xl p-4">
-            <h3 className="text-sm font-semibold text-surface-300 mb-3 flex items-center gap-2">
-              <BarChart2 className="w-4 h-4 text-brand-400" />
-              Signal Overview
-            </h3>
-            <ResponsiveContainer width="100%" height={200}>
+          <div className="p-2">
+            <ResponsiveContainer width="100%" height={220}>
               <RadarChart data={radarData}>
-                <PolarGrid stroke="rgba(148,163,184,0.1)" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#64748b', fontSize: 9 }} />
+                <PolarGrid stroke="rgba(255,255,255,0.06)" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: '#667085', fontSize: 11 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#4A5568', fontSize: 9 }} />
                 <Radar
                   name="Score"
                   dataKey="value"
-                  stroke="#6366f1"
-                  fill="#6366f1"
-                  fillOpacity={0.25}
-                  strokeWidth={2}
+                  stroke="var(--accent)"
+                  fill="var(--accent)"
+                  fillOpacity={0.18}
+                  strokeWidth={1.5}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#1e293b',
-                    border: '1px solid #334155',
-                    borderRadius: '8px',
-                    color: '#f1f5f9',
+                    backgroundColor: 'var(--elevated)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '6px',
+                    color: 'var(--text-primary)',
                     fontSize: '12px',
                   }}
-                  formatter={(val) => [`${val ?? 0}%`, 'Score']}
+                  formatter={(val) => [`${val ?? 0}`, 'Score']}
                 />
               </RadarChart>
             </ResponsiveContainer>
-          </motion.div>
-
-          {/* Suspicious regions */}
-          <motion.div variants={itemVariants} className="glass rounded-2xl p-4">
-            <h3 className="text-sm font-semibold text-surface-300 mb-3 flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 text-amber-400" />
-              Suspicious Regions
-            </h3>
-            {result.suspicious_regions.length === 0 ? (
-              <p className="text-surface-500 text-xs text-center py-4">
-                No specific regions flagged
-              </p>
-            ) : (
-              <div className="space-y-2">
-                {result.suspicious_regions.map((r, i) => (
-                  <div key={i} className="p-3 rounded-xl bg-surface-800/50 border border-surface-700/50">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium text-surface-200">{r.label}</span>
-                      <span className="text-xs text-amber-400 font-mono">
-                        {Math.round(r.confidence * 100)}%
-                      </span>
-                    </div>
-                    <p className="text-xs text-surface-500 leading-relaxed">{r.reason}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Explanation */}
-      <motion.div variants={itemVariants} className="glass rounded-2xl overflow-hidden">
-        <button
-          className="w-full flex items-center justify-between p-5 text-left"
-          onClick={() => setShowExplanation(!showExplanation)}
-        >
-          <div className="flex items-center gap-3">
-            <Shield className="w-5 h-5 text-brand-400" />
-            <h3 className="font-semibold text-white">Forensic Evidence Summary</h3>
+      {/* ── Image Forensics Workspace ─── */}
+      <div className="panel overflow-hidden">
+        <div className="panel-header justify-between">
+          <div className="flex items-center gap-2">
+            <ImageIcon className="w-4 h-4 text-[var(--text-muted)]" />
+            <span className="text-[12px] font-medium text-[var(--text-secondary)]">Image Forensics</span>
           </div>
-          {showExplanation ? 
-            <ChevronUp className="w-4 h-4 text-surface-400" /> : 
-            <ChevronDown className="w-4 h-4 text-surface-400" />
-          }
+          <div className="tab-bar">
+            {([
+              { id: 'original' as ImageView,  label: 'Original',  icon: <ImageIcon className="w-3 h-3" />,  available: true },
+              { id: 'ela' as ImageView,        label: 'ELA',       icon: <Activity  className="w-3 h-3" />,  available: !!result.ela_image_b64 },
+              { id: 'gradcam' as ImageView,    label: 'Grad-CAM',  icon: <Eye       className="w-3 h-3" />,  available: !!result.gradcam_image_b64 },
+              { id: 'annotated' as ImageView,  label: 'Regions',   icon: <Maximize2 className="w-3 h-3" />,  available: !!result.annotated_image_b64 },
+            ] as const).map(v => (
+              <button
+                key={v.id}
+                id={`view-${v.id}`}
+                className={`tab-btn ${imageView === v.id ? 'active' : ''} ${!v.available ? 'disabled' : ''}`}
+                onClick={() => v.available && setImageView(v.id)}
+                disabled={!v.available}
+                aria-pressed={imageView === v.id}
+              >
+                {v.icon}
+                {v.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="image-canvas">
+          <img
+            key={imageView}
+            src={currentImageSrc}
+            alt={`${imageView} forensic view`}
+            className="max-h-96 max-w-full object-contain rounded"
+            style={{ animation: 'fadeIn 0.2s ease-out' }}
+          />
+        </div>
+
+        {imageView !== 'original' && (
+          <div className="px-4 py-2 border-t border-[var(--border)] text-[11px] text-[var(--text-muted)]">
+            {imageView === 'ela'      && 'ELA: Bright pixels indicate different JPEG compression history — possible editing.'}
+            {imageView === 'gradcam'  && 'Grad-CAM: Model attention map. Highlighted regions influenced classifier output.'}
+            {imageView === 'annotated' && 'Annotated: Suspected high-risk regions flagged by forensic analysis.'}
+          </div>
+        )}
+      </div>
+
+      {/* ── Suspicious Regions ─── */}
+      <div className="panel overflow-hidden">
+        <div className="panel-header">
+          <MapPin className="w-4 h-4 text-[var(--text-muted)]" />
+          <span className="text-[12px] font-medium text-[var(--text-secondary)]">Suspicious Regions</span>
+          <span className="ml-auto text-[11px] text-[var(--text-muted)]">
+            {result.suspicious_regions.length} flagged
+          </span>
+        </div>
+
+        {result.suspicious_regions.length === 0 ? (
+          <div className="px-4 py-3">
+            <p className="text-[12px] text-[var(--text-muted)]">
+              No specific regions flagged. Forensic signals did not identify localized anomalies.
+            </p>
+          </div>
+        ) : (
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-[var(--border)]">
+                <th className="text-left px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Region</th>
+                <th className="text-left px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Coordinates</th>
+                <th className="text-right px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Confidence</th>
+                <th className="text-left px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.suspicious_regions.map((r, i) => (
+                <tr key={i} className="border-b border-[var(--border)] last:border-b-0 hover:bg-white/[0.02]">
+                  <td className="px-4 py-2.5 text-[13px] font-medium text-[var(--text-secondary)]">
+                    {r.label || `Region #${i + 1}`}
+                  </td>
+                  <td className="px-4 py-2.5 font-mono text-[11px] text-[var(--text-muted)]">
+                    ({r.bbox[0]}, {r.bbox[1]}) {r.bbox[2]}×{r.bbox[3]}
+                  </td>
+                  <td className="px-4 py-2.5 text-right">
+                    <span className={`text-[12px] font-mono font-semibold ${
+                      r.confidence > 0.7 ? 'text-[var(--danger)]' :
+                      r.confidence > 0.4 ? 'text-[var(--warning)]' :
+                                           'text-[var(--text-secondary)]'
+                    }`}>
+                      {Math.round(r.confidence * 100)}%
+                    </span>
+                  </td>
+                  <td className="px-4 py-2.5 text-[12px] text-[var(--text-muted)]">
+                    {r.reason}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      {/* ── OCR Results ─── */}
+      <div className="panel overflow-hidden">
+        <button
+          className="panel-header w-full text-left hover:bg-white/[0.02] transition-colors"
+          onClick={() => setOcrOpen(o => !o)}
+          aria-expanded={ocrOpen}
+        >
+          <FileText className="w-4 h-4 text-[var(--text-muted)]" />
+          <span className="text-[12px] font-medium text-[var(--text-secondary)]">
+            OCR Extracted Text
+          </span>
+          <span className="ml-2 text-[11px] text-[var(--text-muted)]">
+            {result.ocr_results.length} items
+          </span>
+          <span className="ml-auto">
+            {ocrOpen
+              ? <ChevronDown className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+              : <ChevronRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+            }
+          </span>
         </button>
-        
-        {showExplanation && (
-          <div className="px-5 pb-5 space-y-2">
+
+        {ocrOpen && (
+          result.ocr_results.length === 0 ? (
+            <div className="px-4 py-3">
+              <p className="text-[12px] text-[var(--text-muted)]">No text detected in this image.</p>
+            </div>
+          ) : (
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-[var(--border)]">
+                  <th className="text-left px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Extracted Text</th>
+                  <th className="text-right px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)]">Confidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {result.ocr_results.slice(0, 20).map((item, i) => (
+                  <tr key={i} className="border-b border-[var(--border)] last:border-b-0 hover:bg-white/[0.02]">
+                    <td className="px-4 py-2 font-mono text-[12px] text-[var(--text-secondary)]">
+                      {item.text}
+                    </td>
+                    <td className="px-4 py-2 text-right">
+                      <span className={`text-[12px] font-mono font-semibold ${
+                        item.confidence >= 0.8 ? 'text-[var(--success)]' :
+                        item.confidence >= 0.5 ? 'text-[var(--warning)]' :
+                                                 'text-[var(--danger)]'
+                      }`}>
+                        {Math.round(item.confidence * 100)}%
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )
+        )}
+      </div>
+
+      {/* ── Metadata ─── */}
+      <div className="panel overflow-hidden">
+        <div className="panel-header">
+          <Info className="w-4 h-4 text-[var(--text-muted)]" />
+          <span className="text-[12px] font-medium text-[var(--text-secondary)]">File Metadata</span>
+        </div>
+        <table className="meta-table w-full">
+          <tbody>
+            <tr>
+              <td>File Name</td>
+              <td>{file.name}</td>
+            </tr>
+            <tr>
+              <td>Format</td>
+              <td>{file.type || 'Unknown'}</td>
+            </tr>
+            <tr>
+              <td>File Size</td>
+              <td>{(file.size / 1024 / 1024).toFixed(2)} MB</td>
+            </tr>
+            {result.metadata.image_width && result.metadata.image_height && (
+              <tr>
+                <td>Dimensions</td>
+                <td>{result.metadata.image_width} × {result.metadata.image_height} px</td>
+              </tr>
+            )}
+            <tr>
+              <td>Color Profile</td>
+              <td>{result.metadata.color_profile || '—'}</td>
+            </tr>
+            <tr>
+              <td>EXIF Data</td>
+              <td>{result.metadata.has_exif ? 'Present' : 'None'}</td>
+            </tr>
+            <tr>
+              <td>Software</td>
+              <td>{result.metadata.software || '—'}</td>
+            </tr>
+            <tr>
+              <td>Creation Date</td>
+              <td>{result.metadata.creation_date || '—'}</td>
+            </tr>
+            <tr>
+              <td>Modification</td>
+              <td>{result.metadata.modification_date || '—'}</td>
+            </tr>
+            {result.metadata.camera_make && (
+              <tr>
+                <td>Camera</td>
+                <td>{result.metadata.camera_make} {result.metadata.camera_model || ''}</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        {result.metadata.warnings.length > 0 && (
+          <div className="px-3 py-2 border-t border-[var(--border)]">
+            {result.metadata.warnings.map((w, i) => (
+              <p key={i} className="text-[11px] text-[var(--warning)] flex items-center gap-1.5">
+                <AlertTriangle className="w-3 h-3 flex-shrink-0" /> {w}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* ── Forensic Evidence ─── */}
+      <div className="panel overflow-hidden">
+        <button
+          className="panel-header w-full text-left hover:bg-white/[0.02] transition-colors"
+          onClick={() => setEvidenceOpen(o => !o)}
+          aria-expanded={evidenceOpen}
+        >
+          <Shield className="w-4 h-4 text-[var(--text-muted)]" />
+          <span className="text-[12px] font-medium text-[var(--text-secondary)]">
+            Forensic Evidence Summary
+          </span>
+          <span className="ml-auto">
+            {evidenceOpen
+              ? <ChevronDown className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+              : <ChevronRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+            }
+          </span>
+        </button>
+        {evidenceOpen && (
+          <div className="px-4 py-2">
             {result.explanation.map((finding, i) => (
-              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-surface-800/50">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-400 mt-2 flex-shrink-0" />
-                <p className="text-surface-300 text-sm leading-relaxed">{finding}</p>
+              <div key={i} className="evidence-item">
+                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                  style={{ background: 'var(--accent)' }} />
+                <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed">{finding}</p>
               </div>
             ))}
           </div>
         )}
-      </motion.div>
+      </div>
 
-      {/* OCR Results */}
-      {result.ocr_results.length > 0 && (
-        <motion.div variants={itemVariants} className="glass rounded-2xl overflow-hidden">
-          <button
-            className="w-full flex items-center justify-between p-5 text-left"
-            onClick={() => setShowOCR(!showOCR)}
-          >
-            <div className="flex items-center gap-3">
-              <FileText className="w-5 h-5 text-brand-400" />
-              <h3 className="font-semibold text-white">
-                OCR Extracted Text 
-                <span className="ml-2 text-sm font-normal text-surface-500">
-                  ({result.ocr_results.length} items)
-                </span>
-              </h3>
+      {/* ── ML Model Status ─── */}
+      {!result.ml_available && (
+        <div className="panel p-4">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded flex items-center justify-center bg-[var(--surface)] border border-[var(--border)] flex-shrink-0">
+              <Activity className="w-4 h-4 text-[var(--text-muted)]" />
             </div>
-            {showOCR ? 
-              <ChevronUp className="w-4 h-4 text-surface-400" /> : 
-              <ChevronDown className="w-4 h-4 text-surface-400" />
-            }
-          </button>
-          
-          {showOCR && (
-            <div className="px-5 pb-5">
-              <div className="rounded-xl overflow-hidden border border-surface-800">
-                <table className="w-full text-sm">
-                  <thead className="bg-surface-800/80">
-                    <tr>
-                      <th className="text-left px-4 py-2 text-surface-400 font-medium">Text</th>
-                      <th className="text-right px-4 py-2 text-surface-400 font-medium">Confidence</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-surface-800">
-                    {result.ocr_results.slice(0, 15).map((item, i) => (
-                      <tr key={i} className="hover:bg-surface-800/30">
-                        <td className="px-4 py-2.5 text-surface-200 font-mono">{item.text}</td>
-                        <td className="px-4 py-2.5 text-right">
-                          <span className={`text-xs font-semibold ${
-                            item.confidence >= 0.8 ? 'text-green-400' :
-                            item.confidence >= 0.5 ? 'text-amber-400' : 'text-red-400'
-                          }`}>
-                            {Math.round(item.confidence * 100)}%
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <p className="text-[13px] font-semibold text-[var(--text-secondary)]">
+                  Manipulation Classifier
+                </p>
+                <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]">
+                  Not configured
+                </span>
+              </div>
+              <p className="text-[12px] text-[var(--text-muted)] leading-relaxed">
+                Current analysis uses forensic signal modules: ELA, Noise, OCR, and Layout.
+                To enable ML detection, train the classifier:{' '}
+                <code className="text-[var(--accent)] bg-[var(--surface)] px-1 rounded text-[11px]">
+                  python ml/train.py
+                </code>
+              </p>
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {['ELA', 'Noise', 'OCR', 'Layout', 'Metadata'].map(m => (
+                  <span
+                    key={m}
+                    className="text-[11px] px-2 py-0.5 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)]"
+                  >
+                    {m}
+                  </span>
+                ))}
               </div>
             </div>
-          )}
-        </motion.div>
-      )}
-
-      {/* ML Model Status */}
-      {!result.ml_available && (
-        <motion.div
-          variants={itemVariants}
-          className="glass rounded-2xl p-5 border border-amber-500/20 bg-amber-500/5"
-        >
-          <div className="flex items-start gap-3">
-            <Info className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <h4 className="font-semibold text-amber-300 mb-1">ML Model Not Trained</h4>
-              <p className="text-surface-400 text-sm leading-relaxed">
-                The forensic analysis modules are fully operational, but the trained 
-                manipulation classifier is not yet available. Analysis relies on ELA, 
-                noise, OCR, and layout signals. Train the model using{' '}
-                <code className="text-brand-300 bg-surface-800 px-1 rounded">python ml/train.py</code>{' '}
-                to enable ML-based detection.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Warnings */}
-      {result.warnings.length > 0 && (
-        <motion.div variants={itemVariants} className="glass rounded-2xl p-4 border border-surface-700">
-          <h4 className="text-sm font-semibold text-surface-300 mb-2 flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
-            Analysis Notes
-          </h4>
-          <ul className="space-y-1">
-            {result.warnings.map((w, i) => (
-              <li key={i} className="text-xs text-surface-500">{w}</li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-
-      {/* Disclaimer */}
-      <motion.div
-        variants={itemVariants}
-        className="glass rounded-2xl p-5 border border-surface-700"
-      >
-        <div className="flex items-start gap-3">
-          <Shield className="w-5 h-5 text-surface-500 flex-shrink-0 mt-0.5" />
-          <div>
-            <h4 className="font-semibold text-surface-300 mb-1">Important Disclaimer</h4>
-            <p className="text-surface-500 text-sm leading-relaxed">
-              VeriShot AI provides a <strong className="text-surface-400">forensic risk assessment</strong>,
-              not definitive proof of authenticity or fraud. A high risk score does not prove manipulation;
-              a low score does not guarantee authenticity. This tool should be used as one factor among 
-              many when evaluating document authenticity.
-            </p>
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+      )}
+
+      {/* ── Warnings ─── */}
+      {result.warnings.length > 0 && (
+        <div className="panel p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <AlertTriangle className="w-3.5 h-3.5 text-[var(--warning)]" />
+            <span className="text-[12px] font-semibold text-[var(--text-secondary)]">Analysis Notes</span>
+          </div>
+          <ul className="space-y-1">
+            {result.warnings.map((w, i) => (
+              <li key={i} className="text-[12px] text-[var(--text-muted)]">— {w}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* ── Disclaimer ─── */}
+      <div className="disclaimer-bar" role="note">
+        <AlertCircle className="w-3.5 h-3.5 text-[var(--text-muted)] flex-shrink-0 mt-0.5" />
+        <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">
+          <strong className="text-[var(--text-secondary)] font-medium">Forensic Disclaimer:</strong>{' '}
+          VeriShot AI provides a forensic risk assessment, not definitive proof of authenticity or fraud.
+          A high risk score does not confirm manipulation; a low score does not guarantee authenticity.
+          Use as one factor among many when evaluating document authenticity.
+        </p>
+      </div>
+    </div>
   );
 }
