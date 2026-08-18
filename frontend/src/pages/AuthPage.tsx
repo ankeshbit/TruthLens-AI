@@ -168,82 +168,90 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onBackToHome }) =
           {/* Signup Extra: Full Name */}
           {mode === 'signup' && (
             <div className="form-group">
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                value={fullName}
-                onChange={e => setFullName(e.target.value)}
-                required
-                placeholder=" "
-                autoComplete="name"
-              />
               <label htmlFor="fullName" className="form-label" data-text="ANALYST_NAME">
-                ANALYST_NAME
+                // ANALYST_NAME
               </label>
+              <div className="input-container">
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  value={fullName}
+                  onChange={e => setFullName(e.target.value)}
+                  required
+                  placeholder="e.g. Agent Miller"
+                  autoComplete="name"
+                />
+              </div>
             </div>
           )}
 
           {/* Username / Email */}
           <div className="form-group">
-            <input
-              type="email"
-              id="username"
-              name="username"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-              placeholder=" "
-              autoComplete="email"
-            />
             <label htmlFor="username" className="form-label" data-text="IDENTITY_EMAIL">
-              IDENTITY_EMAIL
+              // IDENTITY_EMAIL
             </label>
+            <div className="input-container">
+              <input
+                type="email"
+                id="username"
+                name="username"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                placeholder="analyst@forensics.org"
+                autoComplete="email"
+              />
+            </div>
           </div>
 
           {/* Access Key / Password */}
           {mode !== 'forgot_password' && (
             <div className="form-group">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                name="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-                placeholder=" "
-                autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
-              />
               <label htmlFor="password" className="form-label" data-text="ACCESS_KEY">
-                ACCESS_KEY
+                // ACCESS_KEY
               </label>
-              <button
-                type="button"
-                onClick={() => setShowPassword(v => !v)}
-                className="glitch-pwd-toggle"
-                aria-label={showPassword ? 'Hide access key' : 'Show access key'}
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
+              <div className="input-container">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                  placeholder="••••••••••••"
+                  autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(v => !v)}
+                  className="glitch-pwd-toggle"
+                  aria-label={showPassword ? 'Hide access key' : 'Show access key'}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
           )}
 
           {/* Signup Confirm Password */}
           {mode === 'signup' && (
             <div className="form-group">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id="confirmPassword"
-                name="confirmPassword"
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-                required
-                placeholder=" "
-                autoComplete="new-password"
-              />
               <label htmlFor="confirmPassword" className="form-label" data-text="CONFIRM_KEY">
-                CONFIRM_KEY
+                // CONFIRM_KEY
               </label>
+              <div className="input-container">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  required
+                  placeholder="••••••••••••"
+                  autoComplete="new-password"
+                />
+              </div>
             </div>
           )}
 

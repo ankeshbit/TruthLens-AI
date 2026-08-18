@@ -122,56 +122,37 @@
   box-shadow: 0 0 12px rgba(0, 242, 234, 0.4);
 }
 
-/* --- Form Elements --- */
+/* --- Form Elements with Clean Cyber Boxes --- */
 .glitch-card .form-group {
   position: relative;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .glitch-card .form-label {
-  position: absolute;
-  top: 0.75em;
-  left: 0.5em;
-  font-size: 0.88rem;
+  position: relative;
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 600;
   color: var(--primary-color);
-  opacity: 0.65;
+  opacity: 0.85;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  pointer-events: none;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.6rem;
   transition: all 0.3s ease;
   font-family: var(--font-family);
+  width: fit-content;
 }
 
-.glitch-card .form-group input {
-  width: 100%;
-  background: rgba(0, 242, 234, 0.02);
-  border: none;
-  border-bottom: 2px solid rgba(0, 242, 234, 0.3);
-  padding: 0.85em 0.5em 0.75em 0.5em;
-  font-size: 0.95rem;
-  color: var(--text-color);
-  font-family: inherit;
-  outline: none;
-  transition: all 0.3s ease;
-  border-radius: 2px 2px 0 0;
-}
-
-.glitch-card .form-group input:focus {
-  border-color: var(--primary-color);
-  background: rgba(0, 242, 234, 0.05);
-  box-shadow: 0 2px 10px rgba(0, 242, 234, 0.15);
-}
-
-.glitch-card .form-group input:focus + .form-label,
-.glitch-card .form-group input:not(:placeholder-shown) + .form-label {
-  top: -1.35em;
-  left: 0;
-  font-size: 0.75rem;
+.glitch-card .form-group:focus-within .form-label {
   opacity: 1;
+  color: #fff;
+  text-shadow: 0 0 8px var(--primary-color);
 }
 
-.glitch-card .form-group input:focus + .form-label::before,
-.glitch-card .form-group input:focus + .form-label::after {
+.glitch-card .form-group:focus-within .form-label::before,
+.glitch-card .form-group:focus-within .form-label::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -181,16 +162,42 @@
   background-color: var(--bg-color);
 }
 
-.glitch-card .form-group input:focus + .form-label::before {
+.glitch-card .form-group:focus-within .form-label::before {
   color: var(--secondary-color);
   animation: glitch-anim var(--glitch-anim-duration)
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-.glitch-card .form-group input:focus + .form-label::after {
+.glitch-card .form-group:focus-within .form-label::after {
   color: var(--primary-color);
   animation: glitch-anim var(--glitch-anim-duration)
     cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+.glitch-card .input-container {
+  position: relative;
+  width: 100%;
+}
+
+.glitch-card .form-group input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 242, 234, 0.28);
+  padding: 0.75em 1em;
+  font-size: 0.92rem;
+  color: var(--text-color);
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.glitch-card .form-group input:focus {
+  border-color: var(--primary-color);
+  background: rgba(0, 242, 234, 0.05);
+  box-shadow:
+    0 0 15px rgba(0, 242, 234, 0.25),
+    inset 0 0 10px rgba(0, 242, 234, 0.08);
 }
 
 @keyframes glitch-anim {
@@ -223,14 +230,18 @@
 /* --- Password Toggle Eye --- */
 .glitch-pwd-toggle {
   position: absolute;
-  right: 0.5em;
-  top: 0.85em;
+  right: 0.75em;
+  top: 50%;
+  transform: translateY(-50%);
   background: transparent;
   border: none;
   color: rgba(0, 242, 234, 0.6);
   cursor: pointer;
   transition: color 0.2s;
   padding: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .glitch-pwd-toggle:hover {
