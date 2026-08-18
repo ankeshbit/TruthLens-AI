@@ -4,7 +4,7 @@ import {
   ChevronRight, Menu, X
 } from 'lucide-react';
 
-type Page = 'home' | 'history' | 'auth';
+type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
 
 interface SidebarProps {
   currentPage: Page;
@@ -80,16 +80,14 @@ export function Sidebar({ currentPage, onPageChange, onReset, engineOnline }: Si
           <NavItem
             icon={<Settings className="w-4 h-4" />}
             label="Settings"
-            active={false}
-            onClick={() => {}}
-            disabled
+            active={currentPage === 'settings'}
+            onClick={() => onPageChange('settings')}
           />
           <NavItem
             icon={<Info className="w-4 h-4" />}
             label="About"
-            active={false}
-            onClick={() => {}}
-            disabled
+            active={currentPage === 'about'}
+            onClick={() => onPageChange('about')}
           />
         </nav>
 

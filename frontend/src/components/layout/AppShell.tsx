@@ -4,7 +4,7 @@ import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
 import { getHealth } from '../../services/api';
 
-type Page = 'home' | 'history' | 'auth';
+type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
 
 interface AppShellProps {
   currentPage: Page;

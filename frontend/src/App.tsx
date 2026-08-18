@@ -6,11 +6,13 @@ import { AnalyzingPage } from './pages/AnalyzingPage';
 import { ResultsPage }   from './pages/ResultsPage';
 import { HistoryPage }   from './pages/HistoryPage';
 import { AuthPage }      from './pages/AuthPage';
+import { SettingsPage }  from './pages/SettingsPage';
+import { AboutPage }     from './pages/AboutPage';
 import { AuthProvider }  from './context/AuthContext';
 import type { AnalysisState } from './types';
 import { analyzeScreenshot } from './services/api';
 
-type Page = 'home' | 'history' | 'auth';
+type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
 
 function MainApp() {
   const [page, setPage] = useState<Page>('home');
@@ -45,6 +47,22 @@ function MainApp() {
       return (
         <motion.div key="auth" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <AuthPage onSuccess={() => setPage('home')} onBackToHome={() => setPage('home')} />
+        </motion.div>
+      );
+    }
+
+    if (page === 'settings') {
+      return (
+        <motion.div key="settings" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <SettingsPage />
+        </motion.div>
+      );
+    }
+
+    if (page === 'about') {
+      return (
+        <motion.div key="about" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <AboutPage />
         </motion.div>
       );
     }

@@ -1,12 +1,14 @@
 import { LogIn, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
-type Page = 'home' | 'history' | 'auth';
+type Page = 'home' | 'history' | 'auth' | 'settings' | 'about';
 
 const PAGE_TITLES: Record<Page, string> = {
-  home:    'Analyze Screenshot',
-  history: 'Analysis History',
-  auth:    'Account',
+  home:     'Analyze Screenshot',
+  history:  'Analysis History',
+  auth:     'Account',
+  settings: 'Settings',
+  about:    'About VeriShot AI',
 };
 
 interface TopbarProps {
